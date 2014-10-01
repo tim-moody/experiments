@@ -1,7 +1,7 @@
 import zmq
 import sys
 
-ipc_sock = "socks/mysock"
+ipc_sock = "/var/run/xsce_cmdsrv/cmdsrv_sock"
 
 context = zmq.Context()
 print "Connecting to server..."

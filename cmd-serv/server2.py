@@ -2,7 +2,7 @@ import zmq
 import time
 import sys
 
-ipc_sock = "socks/mysock"
+ipc_sock = "/var/run/xsce_cmdsrv/cmdsrv_sock"
 
 context = zmq.Context()
 socket = context.socket(zmq.REP)
