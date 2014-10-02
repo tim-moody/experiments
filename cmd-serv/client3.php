@@ -9,18 +9,13 @@
 	<body> 
 		<h1>Hello world!</h1> 
 		<p>This is being served from xsce-cmdsrv using PHP.</p>
-		
-		
-		
-		
-		message: %s </body></html>
+
 <?php
 $context = new ZMQContext();
 $requester->send("Hello");
 $reply = $requester->recv();
 
 echo "message: $reply";
-}
 ?>
   </body>
 </html>
