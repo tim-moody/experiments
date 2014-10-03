@@ -38,7 +38,9 @@ def main():
     """Server routine"""
 
     url_worker = "inproc://workers"
-    url_client = "ipc:///run/cmdsrv_sock"
+    ipc_sock = "/run/cmdsrv_sock"
+    url_client = "ipc://" + ipc_sock
+    
     owner = pwd.getpwnam("apache")
     group = grp.getgrnam("xsce-admin")
 
@@ -48,8 +50,8 @@ def main():
     # Socket to talk to clients
     clients = context.socket(zmq.ROUTER)
     clients.bind(url_client)
-    os.chown(url_client, owner.pw_uid, group.gr_gid)
-    os.chmod(url_client, 0770)
+    os.chown(ipc_sock, owner.pw_uid, group.gr_gid)
+    os.chmod(ipc_sock, 0770)
 
     # Socket to talk to workers
     workers = context.socket(zmq.DEALER)
