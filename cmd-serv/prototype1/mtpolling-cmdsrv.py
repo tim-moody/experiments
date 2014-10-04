@@ -94,7 +94,7 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
 
     while True:
     
-    sockets = dict(poll.poll())
+        sockets = dict(poll.poll())
         # process command
         if data_socket in sockets:
             ident, cmd_msg = data_socket.recv_multipart()
