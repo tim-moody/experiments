@@ -68,7 +68,7 @@ def main():
                 tprint('sending control message server received from client to worker %s id %s' % (msg, ident))
                 workers_control.send("EXIT")
                 clients.send_multipart([ident, "OK"])
-                sleep(3)
+                time.sleep(3)
                 server_run = False
             else:
                 tprint('sending data message server received from client to worker %s id %s' % (msg, ident))
