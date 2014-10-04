@@ -15,6 +15,7 @@ import sys
 import os
 import pwd
 import grp
+import subprocess
 
 def tprint(msg):
     """like print, but won't get newlines confused with multiple threads DELETE AFTER TESTING"""
@@ -138,13 +139,8 @@ def cmd_handler(cmd):
         resp = "Unknown Command"        
     return (resp)
 
-def list_library(cmd):    
-    process = subprocess.Popen(['scripts/list_libr.sh'], stdout=PIPE, stderr=PIPE)
-    process.wait() # Wait for process to complete.
-    resp = ""
-    # iterate on the stdout line by line
-    for line in process.stdout.readlines():
-        resp = resp + line
+def list_library(cmd):
+    resp = subprocess.check_output(["scripts/list_libr.sh"])    
     return (resp)
     
 def wget_file(cmd):
