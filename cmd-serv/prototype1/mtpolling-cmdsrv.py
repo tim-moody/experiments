@@ -16,6 +16,11 @@ import os
 import pwd
 import grp
 
+def tprint(msg):
+    """like print, but won't get newlines confused with multiple threads DELETE AFTER TESTING"""
+    sys.stdout.write(msg + '\n')
+    sys.stdout.flush()
+
 def main():
     """Server routine"""
 
