@@ -55,9 +55,11 @@ def main():
 
     poll = zmq.Poller()
     poll.register(clients, zmq.POLLIN)
-    poll.register(workers_data, zmq.POLLIN)    
+    poll.register(workers_data, zmq.POLLIN)
+    
+    server_run = True
 
-    while True:
+    while server_run == True:
         sockets = dict(poll.poll())
         if clients in sockets:
             ident, msg = clients.recv_multipart()
@@ -66,6 +68,7 @@ def main():
                 tprint('sending control message server received from client to worker %s id %s' % (msg, ident))
                 workers_control.send("EXIT")
                 clients.send_multipart([ident, "OK"])
+                server_run = False
             else:
                 tprint('sending data message server received from client to worker %s id %s' % (msg, ident))
                 workers_data.send_multipart([ident, msg])
@@ -74,10 +77,12 @@ def main():
             tprint('Sending worker message to client %s id %s' % (msg, ident))
             clients.send_multipart([ident, msg])
 
-    # We never get here but clean up anyhow
+    # Clean up if server is stopped
     clients.close()
-    workers.close()
+    workers_data.close()
+    workers_control.close()
     context.term()
+    sys.exit()
     
 def worker_routine(worker_data_url, url_worker_control, context=None):
     """Worker routine"""
@@ -95,8 +100,10 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     poll = zmq.Poller()
     poll.register(data_socket, zmq.POLLIN)
     poll.register(control_socket, zmq.POLLIN)   
-
-    while True:
+    
+    worker_run = True
+    
+    while worker_run == True:
     
         sockets = dict(poll.poll())
         # process command
@@ -107,9 +114,14 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
         if control_socket in sockets:
             ctl_msg = control_socket.recv()
             tprint('got ctl msg %s in worker' % ctl_msg)
-#            clients.send_multipart([ident, msg])
-# look for EXIT
-
+            if ctl_msg = "EXIT":
+                worker_run = False
+                
+    # Clean up if thread is stopped
+    data_socket.close()
+    control_socket.close()
+    context.term()             
+    sys.exit()        
 
 # Now start the application
 if __name__ == "__main__":
