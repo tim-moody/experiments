@@ -12,7 +12,7 @@ ipc_sock = "/run/cmdsrv_sock"
 
 context = zmq.Context()
 print "Connecting to server..."
-socket = context.socket(zmq.REQ)
+socket = context.socket(zmq.DEALER)
 socket.connect ("ipc://%s" % ipc_sock)
 
 socket.send (send_msg)
