@@ -20,6 +20,7 @@ def main():
     """Server routine"""
 
     url_worker_data = "inproc://worker_data"
+    url_worker_control = "inproc://worker_control"
     ipc_sock = "/run/cmdsrv_sock"
     url_client = "ipc://" + ipc_sock
     
@@ -36,15 +37,29 @@ def main():
     os.chmod(ipc_sock, 0770)
 
     # Socket to talk to workers
-    workers = context.socket(zmq.DEALER)
-    workers.bind(url_worker_data)
+    workers_data = context.socket(zmq.DEALER)
+    workers_data.bind(url_worker_data)
 
     # Launch pool of worker threads
     for i in range(5):
         thread = threading.Thread(target=worker_routine, args=(url_worker_data,))
         thread.start()
+        
 
-    zmq.device(zmq.QUEUE, clients, workers)
+    poll = zmq.Poller()
+    poll.register(clients, zmq.POLLIN)
+    poll.register(workers_data,  zmq.POLLIN)
+
+    while True:
+        sockets = dict(poll.poll())
+        if clients in sockets:
+            ident, msg = clients.recv_multipart()
+            tprint('sending message server received from client to worker %s id %s' % (msg, ident))
+            workers_data.send_multipart([ident, msg])
+        if workers_data in sockets:
+            ident, msg = backend.recv_multipart()
+            tprint('Sending worker message to client %s id %s' % (msg, ident))
+            clients.send_multipart([ident, msg])
 
     # We never get here but clean up anyhow
     clients.close()
