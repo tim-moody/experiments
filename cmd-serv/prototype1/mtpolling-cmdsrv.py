@@ -63,9 +63,11 @@ def main():
             ident, msg = clients.recv_multipart()
             tprint('sending message server received from client to worker %s id %s' % (msg, ident))
             if msg == "STOP":
+                tprint('sending control message server received from client to worker %s id %s' % (msg, ident))
                 workers_control.send("EXIT")
             else:
-               workers_data.send_multipart([ident, msg])
+                tprint('sending data message server received from client to worker %s id %s' % (msg, ident))
+                workers_data.send_multipart([ident, msg])
         if workers_data in sockets:
             ident, msg = workers_data.recv_multipart()
             tprint('Sending worker message to client %s id %s' % (msg, ident))
