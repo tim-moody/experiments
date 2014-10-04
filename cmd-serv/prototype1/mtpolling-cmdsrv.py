@@ -53,7 +53,7 @@ def main():
 
     poll = zmq.Poller()
     poll.register(clients, zmq.POLLIN)
-    poll.register(workers_data,  zmq.POLLIN)
+    poll.register(workers_data, zmq.POLLIN)
 
     while True:
         sockets = dict(poll.poll())
@@ -78,10 +78,12 @@ def worker_routine(worker_data_url, context=None):
     data_socket = context.socket(zmq.DEALER)
 
     data_socket.connect(worker_data_url)
+    msg = "World"
 
     while True:
 
-        string  = data_socket.recv()
+        #string  = data_socket.recv()
+        ident, string = data_socket.recv_multipart()
 
         print("Received request: [ %s ]" % (string))
 
@@ -89,7 +91,8 @@ def worker_routine(worker_data_url, context=None):
         time.sleep(1)
 
         #send reply back to client
-        data_socket.send(b"World")
+        #data_socket.send(b"World")
+        data_socket.send_multipart([ident, msg])
 
 
 
