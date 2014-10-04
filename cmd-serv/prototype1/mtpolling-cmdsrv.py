@@ -65,6 +65,7 @@ def main():
             ident, msg = clients.recv_multipart()
             tprint('sending message server received from client to worker %s id %s' % (msg, ident))
             if msg == "STOP":
+                # Tell the worker threads to shut down
                 tprint('sending control message server received from client to worker %s id %s' % (msg, ident))
                 workers_control.send("EXIT")
                 clients.send_multipart([ident, "OK"])
@@ -96,8 +97,6 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     control_socket.connect(url_worker_control)
     control_socket.setsockopt(zmq.SUBSCRIBE,"")
     
-    cmd_msg = "World"
-    
     poll = zmq.Poller()
     poll.register(data_socket, zmq.POLLIN)
     poll.register(control_socket, zmq.POLLIN)   
@@ -111,11 +110,13 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
         if data_socket in sockets:
             ident, cmd_msg = data_socket.recv_multipart()
             tprint('sending message server received from client to worker %s id %s' % (cmd_msg, ident))
-            data_socket.send_multipart([ident, cmd_msg])
+            cmd_resp = cmd_handler(cmd_msg)
+            data_socket.send_multipart([ident, cmd_resp])
         if control_socket in sockets:
             ctl_msg = control_socket.recv()
             tprint('got ctl msg %s in worker' % ctl_msg)
             if ctl_msg == "EXIT":
+                # stop loop in order to terminate thread   
                 worker_run = False
                 
     # Clean up if thread is stopped
@@ -123,6 +124,11 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     control_socket.close()
     #context.term()             
     #sys.exit()        
+
+def cmd_handler(cmd)
+    resp = cmd + " done."
+    return (resp)
+
 
 # Now start the application
 if __name__ == "__main__":
