@@ -65,6 +65,7 @@ def main():
             if msg == "STOP":
                 tprint('sending control message server received from client to worker %s id %s' % (msg, ident))
                 workers_control.send("EXIT")
+                clients.send_multipart([ident, "OK"])
             else:
                 tprint('sending data message server received from client to worker %s id %s' % (msg, ident))
                 workers_data.send_multipart([ident, msg])
@@ -104,7 +105,7 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
             data_socket.send_multipart([ident, cmd_msg])
         if control_socket in sockets:
             ctl_msg = control_socket.recv()
-            tprint('got ctl msg %s in worker %s' % (ctl_msg, ident))
+            tprint('got ctl msg %s in worker' % ctl_msg)
 #            clients.send_multipart([ident, msg])
 # look for EXIT
 
