@@ -3,12 +3,12 @@ import sys
 import uuid
 
 ipc_sock = "/run/cmdsrv_sock"
-identity = uuid.uuid4()
+uuid = uuid.uuid4()
 
 context = zmq.Context()
 print "Connecting to server..."
 socket = context.socket(zmq.REQ)
-socket.identity = identity
+socket.identity = uuid.hex
 socket.connect ("ipc://%s" % ipc_sock)
 
 #  Do 5 requests, waiting each time for a response
