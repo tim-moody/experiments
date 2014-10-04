@@ -62,7 +62,7 @@ def main():
             tprint('sending message server received from client to worker %s id %s' % (msg, ident))
             workers_data.send_multipart([ident, msg])
         if workers_data in sockets:
-            ident, msg = backend.recv_multipart()
+            ident, msg = workers_data.recv_multipart()
             tprint('Sending worker message to client %s id %s' % (msg, ident))
             clients.send_multipart([ident, msg])
 
