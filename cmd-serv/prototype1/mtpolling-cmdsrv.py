@@ -49,7 +49,7 @@ def main():
 
     # Launch pool of worker threads
     for i in range(5):
-        thread = threading.Thread(target=worker_routine, args=(url_worker_data,))
+        thread = threading.Thread(target=worker_routine, args=(url_worker_data,url_worker_control,))
         thread.start()
         
 
