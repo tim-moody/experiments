@@ -125,7 +125,7 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     #context.term()             
     #sys.exit()        
 
-def cmd_handler(cmd)
+def cmd_handler(cmd):
     resp = cmd + " done."
     return (resp)
 
