@@ -75,7 +75,7 @@ def worker_routine(worker_data_url, context=None):
     """Worker routine"""
     context = context or zmq.Context.instance()
     # Socket to talk to dispatcher
-    data_socket = context.socket(zmq.REP)
+    data_socket = context.socket(zmq.DEALER)
 
     data_socket.connect(worker_data_url)
 
