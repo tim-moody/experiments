@@ -88,6 +88,7 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     
     control_socket = context.socket(zmq.SUB)
     control_socket.connect(url_worker_control)
+    control_socket.setsockopt(zmq.SUBSCRIBE,"")
     
     cmd_msg = "World"
     
