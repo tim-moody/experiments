@@ -21,7 +21,7 @@ class ClientTask(threading.Thread):
     def run(self):
         context = zmq.Context()
         socket = context.socket(zmq.DEALER)
-        identity = u'worker-%d' % self.id
+        identity = u'client-thread-%d' % self.id
         socket.identity = identity.encode('ascii')
         socket.connect('tcp://localhost:5570')
         print('Client %s started' % (identity))
@@ -30,13 +30,13 @@ class ClientTask(threading.Thread):
         reqs = 0
         while True:
             reqs = reqs + 1
-            print('Req #%d sent..' % (reqs))
+            print('Req #%d sent to server' % (reqs))
             socket.send_string(u'request #%d' % (reqs))
             for i in range(5):
                 sockets = dict(poll.poll(1000))
                 if socket in sockets:
                     msg = socket.recv()
-                    tprint('Client %s received: %s' % (identity, msg))
+                    tprint('Client %s received from server: %s' % (identity, msg))
 
         socket.close()
         context.term()
@@ -68,11 +68,11 @@ class ServerTask(threading.Thread):
             sockets = dict(poll.poll())
             if frontend in sockets:
                 ident, msg = frontend.recv_multipart()
-                tprint('Server received %s id %s' % (msg, ident))
+                tprint('sending message server received from client to worker %s id %s' % (msg, ident))
                 backend.send_multipart([ident, msg])
             if backend in sockets:
                 ident, msg = backend.recv_multipart()
-                tprint('Sending to frontend %s id %s' % (msg, ident))
+                tprint('Sending worker message to client %s id %s' % (msg, ident))
                 frontend.send_multipart([ident, msg])
 
         frontend.close()
@@ -95,6 +95,7 @@ class ServerWorker(threading.Thread):
             replies = randint(0,4)
             for i in range(replies):
                 time.sleep(1. / (randint(1,10)))
+                tprint('Worker replying to server')
                 worker.send_multipart([ident, msg])
 
         worker.close()
