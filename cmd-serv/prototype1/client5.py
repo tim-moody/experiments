@@ -8,7 +8,7 @@ identity = uuid.uuid4()
 context = zmq.Context()
 print "Connecting to server..."
 socket = context.socket(zmq.REQ)
-socket.identity = identity.encode('ascii')
+socket.identity = identity
 socket.connect ("ipc://%s" % ipc_sock)
 
 #  Do 5 requests, waiting each time for a response
