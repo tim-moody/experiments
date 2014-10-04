@@ -7,8 +7,9 @@ uuid = uuid.uuid4()
 
 context = zmq.Context()
 print "Connecting to server..."
-socket = context.socket(zmq.REQ)
-socket.identity = uuid.hex
+#socket = context.socket(zmq.REQ)
+socket = context.socket(zmq.DEALER)
+#socket.identity = uuid.hex
 socket.connect ("ipc://%s" % ipc_sock)
 
 #  Do 5 requests, waiting each time for a response
