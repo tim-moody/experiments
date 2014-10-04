@@ -121,8 +121,8 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     # Clean up if thread is stopped
     data_socket.close()
     control_socket.close()
-    context.term()             
-    sys.exit()        
+    #context.term()             
+    #sys.exit()        
 
 # Now start the application
 if __name__ == "__main__":
