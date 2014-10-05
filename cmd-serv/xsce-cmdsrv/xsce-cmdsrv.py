@@ -18,6 +18,10 @@ import grp
 import subprocess
 import sqlite3
 
+# Global Variables
+last_command_rowid = 0
+last_job_rowid = 0
+
 def tprint(msg):
     """like print, but won't get newlines confused with multiple threads DELETE AFTER TESTING"""
     sys.stdout.write(msg + '\n')
@@ -151,15 +155,32 @@ def wget_file(cmd):
     return (resp)    
 
 def init():
+    global last_command_rowid
+    global last_job_rowid
+    
     # See if queue.db exists and create if not
     # Opening a connection creates if not exist
-     if not os.path.isfile('queue.db'):
-         conn = sqlite3.connect('queue.db')
-         conn.execute ("CREATE TABLE commands (command text)")
-         conn.commit()
-         conn.execute ("CREATE TABLE jobs (job text, pid integer, status text)")
-         conn.commit()
-         conn.close()
+    if not os.path.isfile('queue.db'):
+        conn = sqlite3.connect('queue.db')
+        conn.execute ("CREATE TABLE commands (command text)")
+        conn.commit()
+        conn.execute ("CREATE TABLE jobs (job text, pid integer, status text)")
+        conn.commit()
+        conn.close()
+    else:
+        conn = sqlite3.connect('queue.db')
+        cur = conn.execute("SELECT max (rowid) from commands")
+        row = cur.fetchone()
+        if row[0] is not None:
+            last_command_rowid = row[0]
+
+        cur = conn.execute("SELECT max (rowid) from jobs")
+        row = cur.fetchone()
+        if row[0] is not None:
+            last_job_rowid = row[0]
+        
+        cur.close()
+        conn.close()
          
 
 
