@@ -133,6 +133,10 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     #sys.exit()        
 
 def cmd_handler(cmd):
+    # store the command
+    store_command(cmd)
+    
+    # process the command
     resp = cmd + " done."
     avail_cmds = {
                  "LIST": list_library,
@@ -154,6 +158,19 @@ def wget_file(cmd):
     
     return (resp)    
 
+def store_command(cmd):
+    lock = Lock()
+    lock.acquire() # will block if lock is already held
+    try:
+        cmd_id = last_command_rowid + 1
+        last_command_rowid = cmd_id
+    finally:
+        lock.release() # release lock, no matter what
+        
+    conn = sqlite3.connect('queue.db')
+    conn.execute ("INSERT INTO commands (rowid, command) VALUES (?,?)", cmd_id, cmd)    
+    conn.commit()
+    
 def init():
     global last_command_rowid
     global last_job_rowid
