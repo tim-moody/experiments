@@ -13,4 +13,8 @@ c = conn.execute("SELECT rowid, * from commands")
 r = c.fetchall()
 print r
 
+c = conn.execute("SELECT rowid, * from jobs")
+r = c.fetchall()
+print r
+
 conn.close()

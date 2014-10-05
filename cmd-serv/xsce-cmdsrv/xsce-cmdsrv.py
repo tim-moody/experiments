@@ -170,6 +170,22 @@ def store_command(cmd):
     conn = sqlite3.connect('queue.db')
     conn.execute ("INSERT INTO commands (rowid, command) VALUES (?,?)", (cmd_id, cmd))    
     conn.commit()
+    conn.close()
+    
+def store_job(job, pid, status):
+    global last_job_rowid
+    lock = threading.Lock()
+    lock.acquire() # will block if lock is already held
+    try:
+        job_id = last_job_rowid + 1
+        last_job_rowid = job_id
+    finally:
+        lock.release() # release lock, no matter what
+        
+    conn = sqlite3.connect('queue.db')
+    conn.execute ("INSERT INTO jobs (rowid, job, pid, status) VALUES (?,?,?,?)", (job_id, job, pid, status ))    
+    conn.commit() 
+    conn.close()   
     
 def init():
     global last_command_rowid
