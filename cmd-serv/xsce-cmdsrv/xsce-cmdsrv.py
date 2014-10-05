@@ -16,6 +16,7 @@ import os
 import pwd
 import grp
 import subprocess
+import sqlite3
 
 def tprint(msg):
     """like print, but won't get newlines confused with multiple threads DELETE AFTER TESTING"""
