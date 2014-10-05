@@ -158,6 +158,7 @@ def wget_file(cmd):
     return (resp)    
 
 def store_command(cmd):
+    global last_command_rowid
     lock = threading.Lock()
     lock.acquire() # will block if lock is already held
     try:
