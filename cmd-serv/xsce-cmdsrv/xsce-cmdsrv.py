@@ -153,7 +153,7 @@ def wget_file(cmd):
 def init():
     # See if queue.db exists and create if not
     # Opening a connection creates if not exist
-     if not isfile(filename):
+     if not os.path.isfile(filename):
          conn = sqlite3.connect('queue.db')
          conn.execute ("CREATE TABLE commands (command text)")
          conn.commit()
