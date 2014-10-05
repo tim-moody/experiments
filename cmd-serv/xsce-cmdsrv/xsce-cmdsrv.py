@@ -25,7 +25,8 @@ def tprint(msg):
 
 def main():
     """Server routine"""
-
+    
+    init()
     url_worker_data = "inproc://worker_data"
     url_worker_control = "inproc://worker_control"
     ipc_sock = "/run/cmdsrv_sock"
@@ -148,6 +149,19 @@ def wget_file(cmd):
     resp = cmd + " done."
     
     return (resp)    
+
+def init():
+    # See if queue.db exists and create if not
+    # Opening a connection creates if not exist
+     if not isfile(filename):
+         conn = sqlite3.connect('queue.db')
+         conn.execute ("CREATE TABLE commands (command text)")
+         conn.commit()
+         conn.execute ("CREATE TABLE jobs (job text, pid integer, status text)")
+         conn.commit()
+         conn.close()
+         
+
 
 # Now start the application
 if __name__ == "__main__":
