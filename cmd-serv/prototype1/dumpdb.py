@@ -9,5 +9,8 @@ r = c.fetchone()
 print r
 print r.keys()
 
-print "Operation done successfully";
+c = conn.execute("SELECT rowid, * from commands")
+r = c.fetchall()
+print r
+
 conn.close()
