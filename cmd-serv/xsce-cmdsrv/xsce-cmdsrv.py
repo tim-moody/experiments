@@ -168,7 +168,7 @@ def store_command(cmd):
         lock.release() # release lock, no matter what
         
     conn = sqlite3.connect('queue.db')
-    conn.execute ("INSERT INTO commands (rowid, command) VALUES (?,?)", cmd_id, cmd)    
+    conn.execute ("INSERT INTO commands (rowid, command) VALUES (?,?)", (cmd_id, cmd))    
     conn.commit()
     
 def init():
