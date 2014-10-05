@@ -141,8 +141,7 @@ def cmd_handler(cmd):
     avail_cmds = {
                  "LIST": list_library,
                  "WGET": wget_file
-                 }                     
-    
+                 }                         
     try:
         resp = avail_cmds[cmd](cmd)
     except KeyError:
@@ -159,7 +158,7 @@ def wget_file(cmd):
     return (resp)    
 
 def store_command(cmd):
-    lock = Lock()
+    lock = threading.Lock()
     lock.acquire() # will block if lock is already held
     try:
         cmd_id = last_command_rowid + 1
