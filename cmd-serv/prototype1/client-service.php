@@ -13,14 +13,24 @@
 <?php
 //  Socket to talk to server
 $command = $_GET['command'];
-echo $command;
+echo "Command: $command <BR>";
 $context = new ZMQContext();
 $requester = new ZMQSocket($context, ZMQ::SOCKET_DEALER);
 $requester->connect("ipc:///run/cmdsrv_sock");
 $requester->send($command);
 $reply = $requester->recv();
 
-echo "message: $reply";
+echo "message: <BR>$reply";
+echo "<BR>";
+echo strToHex($reply);
+
+function strToHex($string){
+    $hex='';
+    for ($i=0; $i < strlen($string); $i++){
+        $hex .= dechex(ord($string[$i]));
+    }
+    return $hex;
+}
 ?>
   </body>
 </html>
