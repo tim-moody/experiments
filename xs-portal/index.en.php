@@ -47,5 +47,3 @@
 </BODY>
 <script type="text/javascript" src="incl/xs-portal.js"></script>
 </HTML>
-
-http://xsce/iiab/video/khan/3
