@@ -1,7 +1,7 @@
 <?php
 /*
 *  xsce-cmdsrv client
-*  Connects REQ socket to ipc:///run/cmdsrv_sock
+*  Connects DEALER socket to ipc:///run/cmdsrv_sock
 *  Sends command, expects response back
 */
 ?>
@@ -15,7 +15,7 @@
 $context = new ZMQContext();
 $requester = new ZMQSocket($context, ZMQ::SOCKET_DEALER);
 $requester->connect("ipc:///run/cmdsrv_sock");
-$requester->send("Hello");
+$requester->send("LIST");
 $reply = $requester->recv();
 
 echo "message: $reply";
