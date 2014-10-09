@@ -27,13 +27,14 @@
 <h2>Khan Academy</h2>
 <?php hard_link("/iiab/video/khan/3", "Math Khan Academy", "Math Videos from the Khan Academy","/library/knowledge/modules/khanacademy/khanlinks/3"); ?>
 <?php hard_link("/iiab/video/khan/4", "Science Khan Academy", "Science Videos from the Khan Academy","/library/knowledge/modules/khanacademy/khanlinks/4"); ?>
-
+<h2>Maps</h2>
+<?php hard_link("/iiab/static/map.html", "Open Street Maps", "Open Street Maps from Internet-in-a-Box","/library/knowledge/modules/openstreetmap/mod_tile64"); ?>
+<h2>Other Content</h2>
 <?php hard_link("/content", "Access Other Content", "Put additional content in /library/content and any subdirectories and link to it with this function, such as syans in Haiti."); ?>
 <?php // iiab_link("Internet In A Box", 
 //                "Internet-in-a-Box is a copy of some of the most important material on the internet, such as the Wikipedia, stored locally where you can reach it easily.",
 //                "Searching for Internet In A Box"); 
 ?>
-<h2>Other Content</h2>
 <?php hard_link("/rachel", "RACHEL", "RACHEL is a copy of some of the most important material on the internet, such as the Wikipedia, stored locally where you can reach it easily."); ?>
 <?php service_link("iiab", "Internet In A Box", "Internet-in-a-Box is a copy of some of the most important material on the internet, such as the Wikipedia, stored locally where you can reach it easily."); ?>
 <?php service_link("moodle", "Moodle Home Page", "Moodle is a collection of lessons and study materials organized to help you learn many fascinating things."); ?>
