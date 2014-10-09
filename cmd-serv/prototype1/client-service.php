@@ -12,10 +12,11 @@
 
 <?php
 //  Socket to talk to server
+$command = $_GET['command'];
 $context = new ZMQContext();
 $requester = new ZMQSocket($context, ZMQ::SOCKET_DEALER);
 $requester->connect("ipc:///run/cmdsrv_sock");
-$requester->send("LIST");
+$requester->send(command);
 $reply = $requester->recv();
 
 echo "message: $reply";
