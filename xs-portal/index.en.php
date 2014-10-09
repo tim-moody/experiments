@@ -17,6 +17,7 @@
 <br><h2>Interesting Things You Can Do Here:</h2>
 
 <?php service_link("pathagar", "Read Books on Pathagar", "Pathagar is a Book Server that contains a local collection of books that you can read without downloading them from the internet."); ?>
+<?php hard_link("/rachel", "RACHEL", "RACHEL is a copy of some of the most important material on the internet, such as the Wikipedia, stored locally where you can reach it easily."); ?>
 <?php hard_link("/iiab/zim/iframe/schools-wikipedia-full-20081023-rc5", "Wikipedia for Schools", "Selection of 6.000 Wikipedia articles for school children","/library/knowledge/modules/wikipedia-zim/schools-wikipedia-full-20081023-rc5.zim"); ?>
 <?php hard_link("/content", "Access Other Content", "Put additional content in /library/content and any subdirectories and link to it with this function, such as syans in Haiti."); ?>
 <?php // iiab_link("Internet In A Box", 
