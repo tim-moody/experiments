@@ -13,6 +13,7 @@
 <?php
 //  Socket to talk to server
 $command = $_GET['command'];
+echo $command;
 $context = new ZMQContext();
 $requester = new ZMQSocket($context, ZMQ::SOCKET_DEALER);
 $requester->connect("ipc:///run/cmdsrv_sock");
