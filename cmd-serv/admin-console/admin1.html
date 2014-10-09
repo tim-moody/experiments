@@ -40,14 +40,55 @@
             <div class="tab-pane" id="AssembleContent">
                 <h1>Assemble Content</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                 <button id="RunAjax" type="button" class="btn btn-lg btn-primary">Primary</button>
             </div>            
         </div> <!-- my-tab-content -->
     </div> <!-- content -->
   </div> <!-- container -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+	$("#RunAjax").click(function(){
+	sendCmdSrvCmd("LIST");		
+});	
+	
+	function sendCmdSrvCmd(command) {
+		//alert ("in getCourseInfo(");
+		//consoleLog ('ran getCourseInfo');
+		$.ajax({
+			type: 'POST',
+			url: courseServicePath + 'get_course.php',
+			data: {
+				command: command
+			},
+			async: false,
+			dataType: 'json',
+			success: function(data){
+				consoleLog(data);
+				//setCourseInfo(data[0]);
+			},
+			error: jsonErrhandler
+		});
+
+		return true;
+	}
+	function jsonErrhandler (jqXHR, textStatus, errorThrown)
+	{
+		alert ("in Errhandler - " + textStatus + errorThrown);
+		//consoleLog("In Error Handler logging jqXHR");
+		//consoleLog(jqXHR);
+		return false;
+	}
+	function consoleLog (msg)
+	{
+		console.log(msg); // for IE there can be no console messages unless in tools mode
+	}	
+</script>	
+
+</body>
 </html>
