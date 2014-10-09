@@ -19,11 +19,11 @@
 <?php service_link("pathagar", "Read Books on Pathagar", "Pathagar is a Book Server that contains a local collection of books that you can read without downloading them from the internet."); ?>
 <h2>Wikipedia</h2>
 <?php hard_link("/iiab/zim/iframe/schools-wikipedia-full-20081023-rc5", "Wikipedia for Schools", "Selection of 6.000 Wikipedia articles for school children","/library/knowledge/modules/wikipedia-zim/schools-wikipedia-full-20081023-rc5.zim"); ?>
-<?php hard_link("/iiab/zim/iframe/wikipedia_en_all_nopic_01_2012", "Wikipedia in English", "Selection of 6.000 Wikipedia articles for school children","/library/knowledge/modules/wikipedia-zim/wikipedia_en_all_nopic_01_2012.zim"); ?>
-<?php hard_link("/iiab/zim/iframe/wikipedia_en_simple_all_08_2011", "Wikipedia in Simplified English", "For non-native speakers of English","/library/knowledge/modules/wikipedia-zim/wikipedia_en_simple_all_08_2011.zim.zim"); ?>
+<?php hard_link("/iiab/zim/iframe/wikipedia_en_all_nopic_01_2012", "Wikipedia in English", "The full English Wikipedia","/library/knowledge/modules/wikipedia-zim/wikipedia_en_all_nopic_01_2012.zim"); ?>
+<?php hard_link("/iiab/zim/iframe/wikipedia_en_simple_all_08_2011", "Wikipedia in Simplified English", "For non-native speakers of English","/library/knowledge/modules/wikipedia-zim/wikipedia_en_simple_all_08_2011.zim"); ?>
 <h2>Khan Academy</h2>
-<?php hard_link("/iiab/zim/iframe/schools-wikipedia-full-20081023-rc5", "Wikipedia for Schools", "Selection of 6.000 Wikipedia articles for school children","/library/knowledge/modules/wikipedia-zim/schools-wikipedia-full-20081023-rc5.zim"); ?>
-<?php hard_link("/iiab/zim/iframe/schools-wikipedia-full-20081023-rc5", "Wikipedia for Schools", "Selection of 6.000 Wikipedia articles for school children","/library/knowledge/modules/wikipedia-zim/schools-wikipedia-full-20081023-rc5.zim"); ?>
+<?php hard_link("/iiab/video/khan/3", "Math Khan Academy", "Math Videos from the Khan Academy","/library/knowledge/modules/khanacademy/khanlinks/3"); ?>
+<?php hard_link("/iiab/video/khan/4", "Science Khan Academy", "Science Videos from the Khan Academy","/library/knowledge/modules/khanacademy/khanlinks/4"); ?>
 
 <?php hard_link("/content", "Access Other Content", "Put additional content in /library/content and any subdirectories and link to it with this function, such as syans in Haiti."); ?>
 <?php // iiab_link("Internet In A Box", 
@@ -42,3 +42,5 @@
 </BODY>
 <script type="text/javascript" src="incl/xs-portal.js"></script>
 </HTML>
+
+http://xsce/iiab/video/khan/3
