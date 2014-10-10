@@ -165,10 +165,12 @@ def wget_file(cmd):
     
     return (resp)    
 def json_array(name, str):
-    # add try/catch
-    str_array = str.split('\n')
-    str_json = json.dumps(str_array)
-    json_resp = '{ "' + name + '":' + str_json + '}'
+    try:
+        str_array = str.split('\n')
+        str_json = json.dumps(str_array)
+        json_resp = '{ "' + name + '":' + str_json + '}'
+    except StandardError:
+        json_resp = cmd_error()
     return (json_resp)
     
 def cmd_error():
