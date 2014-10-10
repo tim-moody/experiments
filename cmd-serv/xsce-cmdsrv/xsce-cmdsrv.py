@@ -150,7 +150,7 @@ def cmd_handler(cmd):
     return (resp)
 
 def do_test(cmd):
-    resp = "{test: xxx}"    
+    resp = '{"test": "xxx"}'    
     return (resp)
     
 def list_library(cmd):
