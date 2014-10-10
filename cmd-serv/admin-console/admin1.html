@@ -58,7 +58,7 @@
 	sendCmdSrvCmd("TEST", testCmdHandler);		
   });	
 	$("#List-CMD").click(function(){
-	sendCmdSrvCmd("LIST", ListCmdHandler);		
+	sendCmdSrvCmd("LIST", listCmdHandler);		
   });	
   
 	//var testCmdHandler = function (data, textStatus, jqXHR) is not necessary
@@ -70,7 +70,7 @@
 		return true;
 	}
 
-	function testCmdHandler (data, textStatus, jqXHR)
+	function listCmdHandler (data, textStatus, jqXHR)
 	{
 		alert ("in Cmdhandler - " + textStatus);
 		consoleLog(data);
