@@ -17,6 +17,7 @@ import pwd
 import grp
 import subprocess
 import sqlite3
+import json
 
 # Global Variables
 last_command_rowid = 0
@@ -154,14 +155,25 @@ def do_test(cmd):
     return (resp)
     
 def list_library(cmd):
-    resp = subprocess.check_output(["scripts/list_libr.sh"])    
-    return (resp)
+    resp = subprocess.check_output(["scripts/list_libr.sh"])
+    json_resp = json_array("library_list", resp)    
+    #proc = subprocess.Popen(['python','fake_utility.py'],stdout=subprocess.PIPE)   
+    return (json_resp)
     
 def wget_file(cmd):
     resp = cmd + " done."
     
     return (resp)    
-
+def json_array(name, str):
+    # add try/catch
+    str_array = str.split('/n')
+    str_json = json.dumps(str_array)
+    json_resp = '{ "' + name + '":' + str_json + '}'
+    return (json_resp)
+    
+def cmd_error():
+    return ('{"Error": "Internal Server Error processing Command."}')   
+    
 def store_command(cmd):
     global last_command_rowid
     lock = threading.Lock()
