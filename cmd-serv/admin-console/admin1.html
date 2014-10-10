@@ -57,7 +57,7 @@
 	sendCmdSrvCmd("TEST", testCmdHandler);		
   });	
   
-	function testCmdHandler (data, textStatus, jqXHR)
+	var testCmdHandler = function (data, textStatus, jqXHR)
 	{
 		alert ("in Cmdhandler - " + textStatus);
 		consoleLog(data);
@@ -77,11 +77,7 @@
 			},
 			async: false,
 			dataType: 'json',
-			success: callback,
-			//success: function(data){
-			//	consoleLog(data);
-				//setCourseInfo(data[0]);
-			//},
+			success: callback,			
 			error: jsonErrhandler
 		});
 
