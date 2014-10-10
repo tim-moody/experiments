@@ -13,5 +13,6 @@ $requester = new ZMQSocket($context, ZMQ::SOCKET_DEALER);
 $requester->connect("ipc:///run/cmdsrv_sock");
 $requester->send($command);
 $reply = $requester->recv();
+header('Content-type: application/json');
 echo $reply;
 ?>
