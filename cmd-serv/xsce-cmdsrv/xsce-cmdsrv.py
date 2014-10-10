@@ -166,7 +166,7 @@ def wget_file(cmd):
     return (resp)    
 def json_array(name, str):
     # add try/catch
-    str_array = str.split('/n')
+    str_array = str.split('\n')
     str_json = json.dumps(str_array)
     json_resp = '{ "' + name + '":' + str_json + '}'
     return (json_resp)
