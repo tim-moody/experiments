@@ -67,11 +67,11 @@
 
 	
 	function sendCmdSrvCmd(command, callback) {
-		//alert ("in getCourseInfo(");
-		//consoleLog ('ran getCourseInfo');
+		//alert ("in sendCmdSrvCmd(");
+		//consoleLog ('ran sendCmdSrvCmd');
 		$.ajax({
 			type: 'POST',
-			url: courseServicePath + 'get_course.php',
+			url: 'cmd-service.php',
 			data: {
 				command: command
 			},
