@@ -40,7 +40,8 @@
             <div class="tab-pane" id="AssembleContent">
                 <h1>Assemble Content</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                 <button id="RunAjax" type="button" class="btn btn-lg btn-primary">Primary</button>
+                 <button id="Test-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Test</button>
+                 <button id="List-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv List</button>
             </div>            
         </div> <!-- my-tab-content -->
     </div> <!-- content -->
@@ -53,11 +54,22 @@
 
 <script type="text/javascript">
 
-	$("#RunAjax").click(function(){
+	$("#Test-CMD").click(function(){
 	sendCmdSrvCmd("TEST", testCmdHandler);		
   });	
+	$("#List-CMD").click(function(){
+	sendCmdSrvCmd("LIST", ListCmdHandler);		
+  });	
   
-	//var testCmdHandler = function (data, textStatus, jqXHR)
+	//var testCmdHandler = function (data, textStatus, jqXHR) is not necessary
+	function testCmdHandler (data, textStatus, jqXHR)
+	{
+		alert ("in Cmdhandler - " + textStatus);
+		consoleLog(data);
+		//consoleLog(jqXHR);
+		return true;
+	}
+
 	function testCmdHandler (data, textStatus, jqXHR)
 	{
 		alert ("in Cmdhandler - " + textStatus);
