@@ -139,6 +139,7 @@ def cmd_handler(cmd):
     # process the command
     resp = cmd + " done."
     avail_cmds = {
+                 "TEST": do_test,
                  "LIST": list_library,
                  "WGET": wget_file
                  }                         
@@ -148,6 +149,10 @@ def cmd_handler(cmd):
         resp = "Unknown Command"        
     return (resp)
 
+def do_test(cmd):
+    resp = "{test: xxx}"    
+    return (resp)
+    
 def list_library(cmd):
     resp = subprocess.check_output(["scripts/list_libr.sh"])    
     return (resp)

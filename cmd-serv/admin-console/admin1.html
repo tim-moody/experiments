@@ -54,10 +54,19 @@
 <script type="text/javascript">
 
 	$("#RunAjax").click(function(){
-	sendCmdSrvCmd("LIST");		
-});	
+	sendCmdSrvCmd("TEST");		
+  });	
+  
+	function testCmdHandler (data, textStatus, jqXHR)
+	{
+		alert ("in Cmdhandler - " + textStatus);
+		consoleLog(data);
+		//consoleLog(jqXHR);
+		return false;
+	}
+
 	
-	function sendCmdSrvCmd(command) {
+	function sendCmdSrvCmd(command, callback) {
 		//alert ("in getCourseInfo(");
 		//consoleLog ('ran getCourseInfo');
 		$.ajax({
@@ -68,10 +77,11 @@
 			},
 			async: false,
 			dataType: 'json',
-			success: function(data){
-				consoleLog(data);
+			success: callback,
+			//success: function(data){
+			//	consoleLog(data);
 				//setCourseInfo(data[0]);
-			},
+			//},
 			error: jsonErrhandler
 		});
 
