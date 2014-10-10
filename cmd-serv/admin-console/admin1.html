@@ -62,7 +62,7 @@
 		alert ("in Cmdhandler - " + textStatus);
 		consoleLog(data);
 		//consoleLog(jqXHR);
-		return false;
+		return true;
 	}
 
 	
@@ -87,6 +87,8 @@
 	{
 		alert ("in Errhandler - " + textStatus + errorThrown);
 		//consoleLog("In Error Handler logging jqXHR");
+		consoleLog(textStatus);
+		consoleLog(errorThrown);
 		consoleLog(jqXHR);
 		return false;
 	}
