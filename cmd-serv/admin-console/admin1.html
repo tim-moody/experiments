@@ -57,7 +57,8 @@
 	sendCmdSrvCmd("TEST", testCmdHandler);		
   });	
   
-	var testCmdHandler = function (data, textStatus, jqXHR)
+	//var testCmdHandler = function (data, textStatus, jqXHR)
+	function testCmdHandler (data, textStatus, jqXHR)
 	{
 		alert ("in Cmdhandler - " + textStatus);
 		consoleLog(data);
