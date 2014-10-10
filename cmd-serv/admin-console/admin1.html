@@ -54,7 +54,7 @@
 <script type="text/javascript">
 
 	$("#RunAjax").click(function(){
-	sendCmdSrvCmd("TEST");		
+	sendCmdSrvCmd("TEST", testCmdHandler);		
   });	
   
 	function testCmdHandler (data, textStatus, jqXHR)
