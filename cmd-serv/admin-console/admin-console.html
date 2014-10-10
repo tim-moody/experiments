@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>School Server Admin Console</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+      <center><h1>School Server Admin Console</h1></center>
+    </div>
+    
+    <div id="content">
+      <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a href="#Configure" data-toggle="tab">Configure</a></li>
+        <li><a href="#InstallContent" data-toggle="tab">Install Content</a></li>
+        <li><a href="#AssembleContent" data-toggle="tab">Assemble Content</a></li>            
+      </ul>
+      <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane active" id="Configure">
+          <h1>Configure the School Server</h1>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-3 col-md-2 sidebar">
+              	<h2>Steps</h2>
+                <ul class="nav nav-sidebar">
+                	<li class="active"><a href="#">1. Select Storage</a></li>
+                  <li><a href="#">Reports</a></li>
+                  <li><a href="#">Analytics</a></li>
+                  <li><a href="#">Export</a></li>
+                  <li class="active"><a href="#">Steps</a></li>
+                  <li><a href="#">1. Select Storage</a></li>
+                  <li><a href="#">Analytics</a></li>
+                  <li><a href="#">Export</a></li>
+                </ul>                  
+              </div>
+              <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              	<h1>Configure</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              </div>
+            </div> <!-- row -->
+          </div> <!-- inner container -->          
+        </div> <!-- Configure -->
+        <div class="tab-pane" id="InstallContent">
+                <h1>Install Content</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div> <!-- InstallContent -->
+        <div class="tab-pane" id="AssembleContent">
+                <h1>Assemble Content</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                 <button id="Test-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Test</button>
+                 <button id="List-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv List</button>
+        </div> <!-- AssembleContent --> 
+      </div> <!-- my-tab-content -->
+    </div> <!-- content -->
+  </div> <!-- container -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+	$("#Test-CMD").click(function(){
+	sendCmdSrvCmd("TEST", testCmdHandler);		
+  });	
+	$("#List-CMD").click(function(){
+	sendCmdSrvCmd("LIST", listCmdHandler);		
+  });	
+  
+	//var testCmdHandler = function (data, textStatus, jqXHR) is not necessary
+	function testCmdHandler (data, textStatus, jqXHR)
+	{
+		alert ("in Cmdhandler - " + textStatus);
+		consoleLog(data);
+		//consoleLog(jqXHR);
+		return true;
+	}
+
+	function listCmdHandler (data, textStatus, jqXHR)
+	{
+		alert ("in listCmdHandler - " + textStatus);
+		consoleLog(data);
+		//consoleLog(jqXHR);
+		return true;
+	}
+
+	
+	function sendCmdSrvCmd(command, callback) {
+		//alert ("in sendCmdSrvCmd(");
+		//consoleLog ('ran sendCmdSrvCmd');
+		$.ajax({
+			type: 'POST',
+			url: 'cmd-service.php',
+			data: {
+				command: command
+			},
+			async: false,
+			dataType: 'json',
+			success: callback,			
+			error: jsonErrhandler
+		});
+
+		return true;
+	}
+	function jsonErrhandler (jqXHR, textStatus, errorThrown)
+	{
+		alert ("in Errhandler - " + textStatus + errorThrown);
+		//consoleLog("In Error Handler logging jqXHR");
+		consoleLog(textStatus);
+		consoleLog(errorThrown);
+		consoleLog(jqXHR);
+		return false;
+	}
+	function consoleLog (msg)
+	{
+		console.log(msg); // for IE there can be no console messages unless in tools mode
+	}	
+</script>	
+
+</body>
+</html>
