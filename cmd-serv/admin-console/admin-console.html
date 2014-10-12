@@ -107,15 +107,15 @@
 			dataType: 'json',
 			//success: callback,
 			callback: callback,
-			success: function(data, textStatus, jqXHR, callback){
+			success: function(data, textStatus, jqXHR){
         consoleLog(textStatus);	
         consoleLog(jqXHR);
-        consoleLog(callback);
+        consoleLog(this.callback);
 			  if ("Error" in data) {
 			    alert ("Error: " + data["Error"]);
 			  }
 			  else {
-			    window[callback](data, textStatus, jqXHR);
+			    window[this.callback](data, textStatus, jqXHR);
 			  }
 			}, 			
 			error: jsonErrhandler
