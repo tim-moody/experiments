@@ -18,10 +18,22 @@ import grp
 import subprocess
 import sqlite3
 import json
+import yaml
 
 # Global Variables
 last_command_rowid = 0
 last_job_rowid = 0
+
+# vars read from ansible vars directory
+# effective is composite where local takes precedence
+
+default_vars = None
+local_vars = None
+effective_vars = None
+xsce_ansible_path = "/root/xsce"
+
+# vars set by admin-console
+config_vars = None
 
 def tprint(msg):
     """like print, but won't get newlines confused with multiple threads DELETE AFTER TESTING"""
@@ -210,6 +222,9 @@ def init():
     global last_command_rowid
     global last_job_rowid
     
+    # Read vars from ansible file into global vars
+    get_xsce_vars()
+    
     # See if queue.db exists and create if not
     # Opening a connection creates if not exist
     if not os.path.isfile('queue.db'):
@@ -233,8 +248,28 @@ def init():
         
         cur.close()
         conn.close()
-         
 
+def get_xsce_vars():            
+    global default_vars
+    global local_vars
+    global effective_vars
+    
+    stream = open(xsce_ansible_path + "/vars/default_vars.yml", 'r')
+    default_vars = yaml.load(stream)
+    stream.close()
+    
+    stream = open(xsce_ansible_path + "/vars/local_vars.yml", 'r')
+    local_vars = yaml.load(stream)
+    stream.close()
+    
+    # combine vars with local taking precedence
+    effective_vars = default_vars
+    for key in local_vars:        
+        effective_vars[key] = local_vars[key] # add or modify   
+        
+def get_ansible_facts():            
+    global default_vars
+       
 
 # Now start the application
 if __name__ == "__main__":

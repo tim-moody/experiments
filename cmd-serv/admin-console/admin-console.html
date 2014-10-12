@@ -117,7 +117,7 @@
 			success: function(data, textStatus, jqXHR){
         //consoleLog(textStatus);	
         //consoleLog(jqXHR);
-        consoleLog(this.callback);
+        // consoleLog(this.callback);
 			  if ("Error" in data) {
 			    alert ("Error: " + data["Error"]);
 			  }
@@ -132,7 +132,7 @@
 	}
 	function jsonErrhandler (jqXHR, textStatus, errorThrown)
 	{
-		alert ("in Errhandler - " + textStatus + errorThrown);
+		alert ("in Errhandler: " + textStatus + ", " + errorThrown);
 		//consoleLog("In Error Handler logging jqXHR");
 		consoleLog(textStatus);
 		consoleLog(errorThrown);
