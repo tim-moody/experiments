@@ -106,7 +106,7 @@
 			async: false,
 			dataType: 'json',
 			//success: callback,
-			success: function(data){
+			success: function(data, textStatus, jqXHR){
         consoleLog(textStatus);	
         consoleLog(jqXHR);	
 			  if ("Error" in data) {
