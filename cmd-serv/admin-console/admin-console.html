@@ -56,6 +56,7 @@
         <div class="tab-pane" id="AssembleContent">
                 <h1>Assemble Content</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                 <button id="Bad-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Bad Command</button>
                  <button id="Test-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Test</button>
                  <button id="List-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv List</button>
         </div> <!-- AssembleContent --> 
@@ -70,9 +71,13 @@
 
 <script type="text/javascript">
 
+	$("#Bad-CMD").click(function(){
+	sendCmdSrvCmd("TEST", testCmdHandler);
+	
 	$("#Test-CMD").click(function(){
 	sendCmdSrvCmd("TEST", testCmdHandler);		
   });	
+  
 	$("#List-CMD").click(function(){
 	sendCmdSrvCmd("LIST", listCmdHandler);		
   });	
@@ -109,14 +114,13 @@
 			//success: callback,
 			callback: callback,
 			success: function(data, textStatus, jqXHR){
-        consoleLog(textStatus);	
-        consoleLog(jqXHR);
+        //consoleLog(textStatus);	
+        //consoleLog(jqXHR);
         consoleLog(this.callback);
 			  if ("Error" in data) {
 			    alert ("Error: " + data["Error"]);
 			  }
 			  else {
-			  	//window[this.callback](data, textStatus, jqXHR);
 			    this.callback(data);
 			  }
 			}, 			
