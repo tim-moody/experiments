@@ -147,7 +147,7 @@ def cmd_handler(cmd):
     try:
         resp = avail_cmds[cmd](cmd)
     except KeyError:
-        resp = '{"Error": "Unknown Command"}')        
+        resp = '{"Error": "Unknown Command"}'        
     return (resp)
 
 def do_test(cmd):
