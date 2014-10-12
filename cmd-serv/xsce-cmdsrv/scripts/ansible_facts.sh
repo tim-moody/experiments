@@ -1,3 +1,3 @@
 #!/bin/sh
 
-ansible localhost -m setup
+ansible localhost -m setup  --tree /tmp/facts

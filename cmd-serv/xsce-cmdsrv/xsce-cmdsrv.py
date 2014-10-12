@@ -31,6 +31,7 @@ default_vars = None
 local_vars = None
 effective_vars = None
 xsce_ansible_path = "/root/xsce"
+ansible_facts = None
 
 # vars set by admin-console
 config_vars = None
@@ -225,6 +226,9 @@ def init():
     # Read vars from ansible file into global vars
     get_xsce_vars()
     
+    # Get ansible facts for localhost
+    def get_ansible_facts()    
+    
     # See if queue.db exists and create if not
     # Opening a connection creates if not exist
     if not os.path.isfile('queue.db'):
@@ -268,9 +272,15 @@ def get_xsce_vars():
         effective_vars[key] = local_vars[key] # add or modify   
         
 def get_ansible_facts():            
-    global default_vars
+    global ansible_facts
        
-
+    rc = subprocess.call(["scripts/ansible_facts.sh"])
+    
+    stream = open ("/tmp/facts/localhost","r")
+    ans = json.load(stream)
+    stream.close()
+    ansible_facts = ans['ansible_facts']
+    
 # Now start the application
 if __name__ == "__main__":
     main()    
