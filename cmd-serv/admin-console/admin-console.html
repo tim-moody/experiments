@@ -78,12 +78,13 @@
   });	
   
 	//var testCmdHandler = function (data, textStatus, jqXHR) is not necessary
-	function testCmdHandler (data)
+	var testCmdHandler = function (data)
+	//function testCmdHandler (data)
 	{
 		alert ("in Cmdhandler");
 		consoleLog(data);
 		return true;
-	}
+	};
 
 	function listCmdHandler (data)
 	{
