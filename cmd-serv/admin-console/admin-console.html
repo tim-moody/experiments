@@ -108,7 +108,8 @@
 			//success: callback,
 			success: function(data, textStatus, jqXHR, callback){
         consoleLog(textStatus);	
-        consoleLog(jqXHR);	
+        consoleLog(jqXHR);
+        consoleLog(callback);
 			  if ("Error" in data) {
 			    alert ("Error: " + data["Error"]);
 			  }
