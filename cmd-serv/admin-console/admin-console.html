@@ -78,17 +78,16 @@
   });	
   
 	//var testCmdHandler = function (data, textStatus, jqXHR) is not necessary
-	function testCmdHandler (data, textStatus, jqXHR)
+	function testCmdHandler (data)
 	{
-		alert ("in Cmdhandler - " + textStatus);
+		alert ("in Cmdhandler");
 		consoleLog(data);
-		//consoleLog(jqXHR);
 		return true;
 	}
 
-	function listCmdHandler (data, textStatus, jqXHR)
+	function listCmdHandler (data)
 	{
-		alert ("in listCmdHandler - " + textStatus);
+		alert ("in listCmdHandler");
 		consoleLog(data);
 		//consoleLog(jqXHR);
 		return true;
@@ -106,7 +105,17 @@
 			},
 			async: false,
 			dataType: 'json',
-			success: callback,			
+			//success: callback,
+			success: function(data){
+				//consoleLog(textStatus);	
+			  //consoleLog(jqXHR);	
+			  if ("Error" in data) {
+			    alert ("Error: " + data["Error"];
+			  }
+			  else {
+			    window[callback](data, textStatus, jqXHR);
+			  }
+			}, 			
 			error: jsonErrhandler
 		});
 
