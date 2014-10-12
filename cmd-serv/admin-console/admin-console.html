@@ -116,7 +116,8 @@
 			    alert ("Error: " + data["Error"]);
 			  }
 			  else {
-			    window[this.callback](data, textStatus, jqXHR);
+			  	//window[this.callback](data, textStatus, jqXHR);
+			    this.callback](data);
 			  }
 			}, 			
 			error: jsonErrhandler
