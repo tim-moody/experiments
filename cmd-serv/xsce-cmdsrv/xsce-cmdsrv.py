@@ -227,7 +227,7 @@ def init():
     get_xsce_vars()
     
     # Get ansible facts for localhost
-    def get_ansible_facts()    
+    get_ansible_facts()    
     
     # See if queue.db exists and create if not
     # Opening a connection creates if not exist
