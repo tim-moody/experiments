@@ -287,7 +287,7 @@ def get_xsce_vars():
         print "key : value", key , default_vars[key]
         if isinstance(default_vars[key], str):
             if not default_vars[key].find("{"):
-                effective_vars[key]) = default_vars[key]
+                effective_vars[key] = default_vars[key]
         else:
             effective_vars[key] = default_vars[key]                     
         
