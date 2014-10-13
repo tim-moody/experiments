@@ -38,7 +38,7 @@
 						<div class="container-fluid">
 							<div class="row-fluid">
 								<div class="col-md-3">
-									<h2>Steps</h2>
+									<h2>Check List</h2>
 									<ul class="nav nav-sidebar">
 										<li class="active"><a href="#">1. Select Storage</a></li>
 										<li><a href="#">Next Step</a></li>
@@ -47,12 +47,12 @@
 									</ul>
 								</div>
 								<div class="col-md-9">
-									<h1>Configure</h1>
+									<h2>Configuration Parameters</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                   <form role="form">
                   	<div class="form-group">
-                  		<label for="exampleInputEmail1">Email address</label>
-                  		<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  		<label for="xsceDomain">Domain Name</label>
+                  		<input type="text" class="form-control" id="xsceDomain" placeholder="Enter new domain name without leading dot.">
                   	</div>
                   	<div class="form-group">
                   		<label for="exampleInputPassword1">Password</label>
@@ -63,10 +63,15 @@
                   		<input type="file" id="exampleInputFile">
                   		<p class="help-block">Example block-level help text here.</p>
                   	</div>
+                  	<h2>Services to Enable</h2>
                   	<div class="checkbox">
                   		<label>
                   			<input type="checkbox"> Check me out
                   		</label>
+                  		<label class="checkbox">
+                        <input type="checkbox" id="mysql_enabble" >
+                        Check to Enable the Mysql database.
+                      </label>
                   	</div>
                   	<button type="submit" class="btn btn-default">Submit</button>
                   </form>
