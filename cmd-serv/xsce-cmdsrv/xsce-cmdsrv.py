@@ -287,7 +287,7 @@ def get_xsce_vars():
         print "key : value", key , effective_vars[key]
         if isinstance(effective_vars[key], str):
             if effective_vars[key].find("{"):
-                effective_vars[key].pop()                
+                effective_vars.pop(key)                
         
     for key in local_vars:
         if isinstance(local_vars[key], str):
