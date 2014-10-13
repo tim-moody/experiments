@@ -283,13 +283,19 @@ def get_xsce_vars():
     # exclude derived vars marked by {
     
     for key in default_vars:
-        if not default_vars[key].find("{"):
+        if isinstance(default_vars[key], str):
+            if not default_vars[key].find("{"):
+                effective_vars[key] = default_vars[key]
+        else:
             effective_vars[key] = default_vars[key]
             
     for key in local_vars:
-        if not local_vars[key].find("{"):
-            effective_vars[key] = local_vars[key]       
-        
+        if isinstance(local_vars[key], str):
+            if not local_vars[key].find("{"):
+                effective_vars[key] = local_vars[key]       
+        else:
+            effective_vars[key] = local_vars[key]
+                    
 def get_ansible_facts():            
     global ansible_facts
        
