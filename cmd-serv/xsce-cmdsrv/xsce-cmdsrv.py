@@ -19,6 +19,7 @@ import subprocess
 import sqlite3
 import json
 import yaml
+import re
 
 # Global Variables
 last_command_rowid = 0
@@ -147,6 +148,11 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     #sys.exit()        
 
 def cmd_handler(cmd):
+    # check for malicious characters and return error if found
+    bad_command = validate_command(cmd)
+    if bad_command != None:
+        return (bad_command)
+        
     # store the command
     store_command(cmd)
     
@@ -176,7 +182,8 @@ def list_library(cmd):
 def wget_file(cmd):
     resp = cmd + " done."
     
-    return (resp)    
+    return (resp)
+        
 def json_array(name, str):
     try:
         str_array = str.split('\n')
@@ -186,6 +193,12 @@ def json_array(name, str):
         json_resp = cmd_error()
     return (json_resp)
     
+def validate_command(cmd):
+    if re.search('[;,|<>()=&\r\n]', cmd, flags=0):
+        return ('{"Error": "Malformed Command."}')
+    else:
+        return None
+
 def cmd_error():
     return ('{"Error": "Internal Server Error processing Command."}')   
     
@@ -267,9 +280,15 @@ def get_xsce_vars():
     stream.close()
     
     # combine vars with local taking precedence
-    effective_vars = default_vars
-    for key in local_vars:        
-        effective_vars[key] = local_vars[key] # add or modify   
+    # exclude derived vars marked by {
+    
+    for key in default_vars:
+        if not default_vars[key].find("{"):
+            effective_vars[key] = default_vars[key]
+            
+    for key in local_vars:
+        if not local_vars[key].find("{"):
+            effective_vars[key] = local_vars[key]       
         
 def get_ansible_facts():            
     global ansible_facts
