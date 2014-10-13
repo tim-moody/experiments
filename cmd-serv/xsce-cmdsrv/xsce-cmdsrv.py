@@ -161,7 +161,8 @@ def cmd_handler(cmd):
     avail_cmds = {
                  "TEST": do_test,
                  "LIST": list_library,
-                 "WGET": wget_file
+                 "WGET": wget_file,
+                 "GET-ANS": 
                  }                         
     try:
         resp = avail_cmds[cmd](cmd)
@@ -183,6 +184,10 @@ def wget_file(cmd):
     resp = cmd + " done."
     
     return (resp)
+    
+def return_ans_facts(cmd):
+    resp = json.dumps(ansible_facts)    
+    return (resp)    
         
 def json_array(name, str):
     try:

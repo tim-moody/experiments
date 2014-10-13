@@ -140,6 +140,13 @@
 
 		<script type="text/javascript">
 
+			var ansibleFacts = {};
+			var effective_vars = {};
+			var effective_vars = {};
+			
+			// Get Ansible facts and other data
+			init();
+			
 			$("#Bad-CMD").click(function(){
 				sendCmdSrvCmd("XXX", testCmdHandler);
 			});
@@ -168,6 +175,15 @@
 				//consoleLog(jqXHR);
 				return true;
 			}
+			
+			function getAnsibleFacts (data)
+			{
+				alert ("in getAnsibleFacts");
+				consoleLog(data);
+				ansibleFacts = data;
+				//consoleLog(jqXHR);
+				return true;
+			}			
 
 
 			function sendCmdSrvCmd(command, callback) {
@@ -212,6 +228,12 @@
 			{
 				console.log(msg); // for IE there can be no console messages unless in tools mode
 			}
+
+			function init ()
+			{
+				sendCmdSrvCmd("GET-ANS", getAnsibleFacts);				
+			}			
+
 		</script>
 
 	</body>
