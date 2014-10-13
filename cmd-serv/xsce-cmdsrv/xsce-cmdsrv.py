@@ -283,6 +283,7 @@ def get_xsce_vars():
     # exclude derived vars marked by {
     
     for key in default_vars:
+        print "key : value", key , default_vars[key]
         if isinstance(default_vars[key], str):
             if not default_vars[key].find("{"):
                 effective_vars[key] = default_vars[key]
