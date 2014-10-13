@@ -32,7 +32,7 @@ default_vars = {}
 local_vars = {}
 effective_vars = {}
 xsce_ansible_path = "/root/xsce"
-ansible_facts = None
+ansible_facts = {}
 
 # vars set by admin-console
 config_vars = None
@@ -286,14 +286,16 @@ def get_xsce_vars():
     for key in default_vars:
         print "key : value", key , default_vars[key]
         if isinstance(default_vars[key], str):
-            if not default_vars[key].find("{"):
+            findpos = default_vars[key].find("{")
+            if findpos == -1:
                 effective_vars[key] = default_vars[key]
         else:
             effective_vars[key] = default_vars[key]                     
         
     for key in local_vars:
         if isinstance(local_vars[key], str):
-            if not local_vars[key].find("{"):
+            findpos = local_vars[key].find("{")
+            if findpos == -1:            
                 effective_vars[key] = local_vars[key]       
         else:
             effective_vars[key] = local_vars[key]
