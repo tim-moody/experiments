@@ -162,7 +162,7 @@ def cmd_handler(cmd):
                  "TEST": do_test,
                  "LIST": list_library,
                  "WGET": wget_file,
-                 "GET-ANS": 
+                 "GET-ANS": return_ans_facts
                  }                         
     try:
         resp = avail_cmds[cmd](cmd)
