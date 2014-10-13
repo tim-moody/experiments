@@ -185,6 +185,15 @@
 				return true;
 			}			
 
+			function getInstallVars (data)
+			{
+				alert ("in getInstallVars");
+				consoleLog(data);
+				effective_vars = data;
+				//consoleLog(jqXHR);
+				return true;
+			}			
+
 
 			function sendCmdSrvCmd(command, callback) {
 				//alert ("in sendCmdSrvCmd(");
@@ -231,7 +240,8 @@
 
 			function init ()
 			{
-				sendCmdSrvCmd("GET-ANS", getAnsibleFacts);				
+				sendCmdSrvCmd("GET-ANS", getAnsibleFacts);
+				sendCmdSrvCmd("GET-VARS", getInstallVars);				
 			}			
 
 		</script>

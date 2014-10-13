@@ -162,7 +162,8 @@ def cmd_handler(cmd):
                  "TEST": do_test,
                  "LIST": list_library,
                  "WGET": wget_file,
-                 "GET-ANS": return_ans_facts
+                 "GET-ANS": return_ans_facts,
+                 "GET-VARS": return_install_vars
                  }                         
     try:
         resp = avail_cmds[cmd](cmd)
@@ -187,7 +188,11 @@ def wget_file(cmd):
     
 def return_ans_facts(cmd):
     resp = json.dumps(ansible_facts)    
-    return (resp)    
+    return (resp)  
+    
+def return_install_vars(cmd):
+    resp = json.dumps(effective_vars)    
+    return (resp)        
         
 def json_array(name, str):
     try:
