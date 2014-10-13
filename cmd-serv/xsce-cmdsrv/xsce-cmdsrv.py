@@ -28,9 +28,9 @@ last_job_rowid = 0
 # vars read from ansible vars directory
 # effective is composite where local takes precedence
 
-default_vars = None
-local_vars = None
-effective_vars = None
+default_vars = {}
+local_vars = {}
+effective_vars = {}
 xsce_ansible_path = "/root/xsce"
 ansible_facts = None
 
@@ -282,12 +282,14 @@ def get_xsce_vars():
     # combine vars with local taking precedence
     # exclude derived vars marked by {
     
-    effective_vars = default_vars
+    # effective_vars = default_vars
     for key in default_vars:
         print "key : value", key , default_vars[key]
         if isinstance(default_vars[key], str):
-            if default_vars[key].find("{"):
-                effective_vars.pop(key)                
+            if not default_vars[key].find("{"):
+                effective_vars[key]) = default_vars[key]
+        else:
+            effective_vars[key] = default_vars[key]                     
         
     for key in local_vars:
         if isinstance(local_vars[key], str):
