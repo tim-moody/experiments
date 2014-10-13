@@ -194,7 +194,8 @@ def json_array(name, str):
     return (json_resp)
     
 def validate_command(cmd):
-    if re.search('[;,|<>()=&\r\n]', cmd, flags=0):
+    match = re.search('[;,|<>()=&\r\n]', cmd, flags=0)
+    if match != None:
         return ('{"Error": "Malformed Command."}')
     else:
         return None
@@ -282,9 +283,8 @@ def get_xsce_vars():
     # combine vars with local taking precedence
     # exclude derived vars marked by {
     
-    # effective_vars = default_vars
     for key in default_vars:
-        print "key : value", key , default_vars[key]
+        # print "key : value", key , default_vars[key]
         if isinstance(default_vars[key], str):
             findpos = default_vars[key].find("{")
             if findpos == -1:
@@ -300,7 +300,7 @@ def get_xsce_vars():
         else:
             effective_vars[key] = local_vars[key]
             
-    print effective_vars
+    # print effective_vars
                     
 def get_ansible_facts():            
     global ansible_facts
