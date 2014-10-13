@@ -297,6 +297,8 @@ def get_xsce_vars():
                 effective_vars[key] = local_vars[key]       
         else:
             effective_vars[key] = local_vars[key]
+            
+    print effective_vars
                     
 def get_ansible_facts():            
     global ansible_facts
