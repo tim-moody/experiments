@@ -50,10 +50,10 @@
 								<div class="col-md-9">
 									<h2>Configuration Parameters</h2>
 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <form role="form">
+                  <form role="form" id="form1">
                   	<div class="form-group">
                   		<label for="xsce_domain">Host and Domain Name</label>
-                  		<input type="text" class="form-control" id="xsce_hostname" readonly style="width:200px"> &nbsp;.&nbsp;
+                  		<input type="text"  id="xsce_hostname" readonly style="width:200px"> &nbsp;.&nbsp;
                   		<input type="text" class="form-control" id="xsce_domain" placeholder="Enter new domain name without leading dot.">                  		
                   	</div>
                   	<div class="form-group">
@@ -61,6 +61,33 @@
                   		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                   	</div>
                   	<div class="form-group">
+                  		<label for="exampleInputFile">File input</label>
+                  		<input type="file" id="exampleInputFile">
+                  		<p class="help-block">Example block-level help text here.</p>
+                  	</div>
+                  	<h2>Services to Enable</h2>
+                  	<div class="checkbox">
+                  		<label>
+                  			<input type="checkbox"> Check me out
+                  		</label>
+                  		<label class="checkbox">
+                        <input type="checkbox" id="mysql_enabble" >
+                        Check to Enable the Mysql database.
+                      </label>
+                  	</div>
+                  	<button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+                  <form role="form" id="form2">
+                  	<div >
+                  		<label for="xsce_domain">Host and Domain Name</label>
+                  		<input type="text"  id="xsce_hostname" readonly style="width:200px"> &nbsp;.&nbsp;
+                  		<input type="text" class="form-control" id="xsce_domain" placeholder="Enter new domain name without leading dot.">                  		
+                  	</div>
+                  	<div class=>
+                  		<label for="exampleInputPassword1">Password</label>
+                  		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  	</div>
+                  	<div c>
                   		<label for="exampleInputFile">File input</label>
                   		<input type="file" id="exampleInputFile">
                   		<p class="help-block">Example block-level help text here.</p>
