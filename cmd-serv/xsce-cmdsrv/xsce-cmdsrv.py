@@ -31,11 +31,20 @@ last_job_rowid = 0
 default_vars = {}
 local_vars = {}
 effective_vars = {}
-xsce_ansible_path = "/root/xsce"
+xsce_ansible_path = "/root/xsce" # ToDo read from config file
 ansible_facts = {}
 
 # vars set by admin-console
 config_vars = {}
+
+avail_cmds = {
+    "TEST": do_test,
+    "LIST": list_library,
+    "WGET": wget_file,
+    "GET-ANS": return_ans_facts,
+    "GET-VARS": return_install_vars,
+    "GET-CONF": return_config_vars
+    }    
 
 def tprint(msg):
     """like print, but won't get newlines confused with multiple threads DELETE AFTER TESTING"""
@@ -192,7 +201,12 @@ def return_ans_facts(cmd):
     
 def return_install_vars(cmd):
     resp = json.dumps(effective_vars)    
-    return (resp)        
+    return (resp)  
+    
+def return_config_vars(cmd):
+    read_config_vars()
+    resp = json.dumps(config_vars)    
+    return (resp)            
         
 def json_array(name, str):
     try:
@@ -277,6 +291,22 @@ def init():
         cur.close()
         conn.close()
 
+def read_config_vars():            
+    global config_vars
+       
+    stream = open(xsce_ansible_path + "/vars/config_vars.yml", 'r')
+    config_vars = yaml.load(stream)
+    stream.close()  
+    
+def write_config_vars():            
+    global config_vars  
+    
+    with open(xsce_ansible_path + "/vars/config_vars.yml", 'w') as f:
+        f.write('# DO NOT MODIFY THIS FILE.\n')
+        f.write('# IT IS AUTOMATICALLY GENERATED.\n')
+        json.dump(config_vars, f) 
+        f.close() 
+    
 def get_xsce_vars():            
     global default_vars
     global local_vars
