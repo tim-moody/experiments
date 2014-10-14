@@ -150,7 +150,7 @@
 							<div class="row-fluid">
 								<div class="col-md-3">
 									<h2>Steps</h2>
-									<ul class="nav nav-tabs nav-stacked" data-tabs="tabs">
+									<ul class="nav nav-pills nav-stacked" data-tabs="tabs">
 										<li class="active"><a href="#Assemble1">1. Select Storage</a></li>										
 										<li><a href="#Assemble2">Next Step</a></li>
 									</ul>
@@ -212,10 +212,10 @@
 			// Get Ansible facts and other data
 			init();
 			
-			$('#assembleTabs a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-      })
+			//$('#assembleTabs a').click(function (e) {
+      //e.preventDefault()
+      //$(this).tab('show')
+      //})
 			
 			$("#Bad-CMD").click(function(){
 				sendCmdSrvCmd("XXX", testCmdHandler);
