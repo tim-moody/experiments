@@ -106,7 +106,7 @@
                   	<h3>For Monitoring and Administration<h3>                  		
                   	<div class="checkbox">		
                   		<label>
-                  			<input type="checkbox" id="xovis_enabled">XO Visualization&mdash;Graphs of Student Statistics
+                  			<input type="checkbox" id="xovis_enabled">XO Visualization&mdash;Graphs of Student Usage Statistics
                   		</label>
                   	</div>
                   	<div class="checkbox">		
@@ -151,41 +151,46 @@
 								<div class="col-md-3">
 									<h2>Steps</h2>
 									<ul class="nav nav-sidebar">
-										<li class="active"><a href="#">1. Select Storage</a></li>
-										<li><a href="#">Next Step</a></li>
-										<li><a href="#">Next Step</a></li>
-										<li><a href="#">Next Step</a></li>
+										<li class="active"><a href="#Assemble1">1. Select Storage</a></li>										
+										<li><a href="#Assemble2">Next Step</a></li>
 									</ul>
 								</div>
 								<div class="col-md-9">
-									<h1>Configure</h1>
+									<h1>Assemble</h1>
 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <form role="form">
-                  	<div class="form-group">
-                  		<label for="exampleInputEmail1">Email address</label>
-                  		<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                  	</div>
-                  	<div class="form-group">
-                  		<label for="exampleInputPassword1">Password</label>
-                  		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                  	</div>
-                  	<div class="form-group">
-                  		<label for="exampleInputFile">File input</label>
-                  		<input type="file" id="exampleInputFile">
-                  		<p class="help-block">Example block-level help text here.</p>
-                  	</div>
-                  	<div class="checkbox">
-                  		<label>
-                  			<input type="checkbox"> Check me out
-                  		</label>
-                  	</div>
-                  	<button type="submit" class="btn btn-default">Submit</button>
-                  </form>
-
-									<button id="Bad-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Bad Command</button>
-									<button id="Test-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Test</button>
-									<button id="List-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv List</button>
-								</div>
+									<div id="assembleTabs" class="tab-content">
+  					        <div class="tab-pane active" id="Assemble1">
+                      <form role="form" id="assembleForm1">
+                      	<div class="form-group">
+                      		<label for="exampleInputEmail1">Email address</label>
+                      		<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                      	</div>
+                      	<div class="form-group">
+                      		<label for="exampleInputPassword1">Password</label>
+                      		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      	</div>
+                      </form>
+                    </div>
+                    <div class="tab-pane active" id="Assemble1">
+                      <form role="form" id="assembleForm2">
+                      	<div class="form-group">
+                      		<label for="exampleInputFile">File input</label>
+                      		<input type="file" id="exampleInputFile">
+                      		<p class="help-block">Example block-level help text here.</p>
+                      	</div>
+                      	<div class="checkbox">
+                      		<label>
+                      			<input type="checkbox"> Check me out
+                      		</label>
+                      	</div>
+                      	<button type="submit" class="btn btn-default">Submit</button>
+                      </form>
+    
+    									<button id="Bad-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Bad Command</button>
+    									<button id="Test-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Test</button>
+    									<button id="List-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv List</button>
+    								</div>
+								</div> <!-- column -->
 							</div> <!-- row -->
 						</div> <!-- inner container -->
 					</div> <!-- AssembleContent -->
