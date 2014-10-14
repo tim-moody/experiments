@@ -8,6 +8,7 @@
 
 		<!-- Bootstrap -->
 		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/xsce.css" rel="stylesheet">
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -142,7 +143,7 @@
 
 			var ansibleFacts = {};
 			var effective_vars = {};
-			var effective_vars = {};
+			var config_vars = {};
 			
 			// Get Ansible facts and other data
 			init();
@@ -193,7 +194,14 @@
 				//consoleLog(jqXHR);
 				return true;
 			}			
-
+			function getConfigVars (data)
+			{
+				alert ("in getConfigVars");
+				consoleLog(data);
+				config_vars = data;
+				//consoleLog(jqXHR);
+				return true;
+			}			
 
 			function sendCmdSrvCmd(command, callback) {
 				//alert ("in sendCmdSrvCmd(");
@@ -241,7 +249,8 @@
 			function init ()
 			{
 				sendCmdSrvCmd("GET-ANS", getAnsibleFacts);
-				sendCmdSrvCmd("GET-VARS", getInstallVars);				
+				sendCmdSrvCmd("GET-VARS", getInstallVars);
+				sendCmdSrvCmd("GET-CONF", getConfigVars);				
 			}			
 
 		</script>

@@ -35,7 +35,7 @@ xsce_ansible_path = "/root/xsce"
 ansible_facts = {}
 
 # vars set by admin-console
-config_vars = None
+config_vars = {}
 
 def tprint(msg):
     """like print, but won't get newlines confused with multiple threads DELETE AFTER TESTING"""
