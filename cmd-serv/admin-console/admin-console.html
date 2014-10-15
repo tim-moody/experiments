@@ -272,8 +272,8 @@
 			{
 				alert ("in getConfigVars");
 				consoleLog(data);
-				# If this is the first time config_vars.yml will be empty
-				# so copy from effective_vars
+				// If this is the first time config_vars.yml will be empty
+				// so copy from effective_vars
 				if (data = "{}" {
 					$.each($('#Configure form input').serializeArray(), function(i, field) { 
     			consoleLog(field.name);
