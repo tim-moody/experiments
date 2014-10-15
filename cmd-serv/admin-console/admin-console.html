@@ -276,7 +276,7 @@
 				// so copy from effective_vars
 				if (Object.keys(data).length == 0) {
 					$('#Configure input').each( function(){
-						if (this.name in effective_vars) {
+						if (effective_vars.hasOwnProperty(this.name)){						
 							config_vars[this.name] = effective_vars[this.name];
 						}
 		        //console.log($(this).val());
