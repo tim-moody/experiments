@@ -25,7 +25,7 @@
 					<li><a href="#set2">Tab 2</a></li>
 				</ul>
 				<div class="tab-content"> <!-- Top Level Content-->
-					<div class="tab-pane" id="set1"> <!-- 2nd Level Option 1 Content-->
+					<div class="tab-pane active" id="set1"> <!-- 2nd Level Option 1 Content-->
 
 						<div class="tabbable"> <!-- 2nd Level Option 1 Sub Nav-->
 							<div class="row">
@@ -83,7 +83,7 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-			$("#set1").show();
+			//$("#set1").show();
 			$("ul.nav a").click(function (e) {
 				e.preventDefault();
 				$(this).tab('show');
