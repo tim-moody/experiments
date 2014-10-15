@@ -37,14 +37,7 @@ ansible_facts = {}
 # vars set by admin-console
 config_vars = {}
 
-avail_cmds = {
-    "TEST": do_test,
-    "LIST": list_library,
-    "WGET": wget_file,
-    "GET-ANS": return_ans_facts,
-    "GET-VARS": return_install_vars,
-    "GET-CONF": return_config_vars
-    }    
+# available commands are in cmd_handler
 
 def tprint(msg):
     """like print, but won't get newlines confused with multiple threads DELETE AFTER TESTING"""
@@ -157,6 +150,19 @@ def worker_routine(worker_data_url, url_worker_control, context=None):
     #sys.exit()        
 
 def cmd_handler(cmd):
+
+    # List of recognized commands and corresponding routine
+    # Don't do anything else
+    
+    avail_cmds = {
+        "TEST": do_test,
+        "LIST": list_library,
+        "WGET": wget_file,
+        "GET-ANS": return_ans_facts,
+        "GET-VARS": return_install_vars,
+        "GET-CONF": return_config_vars
+        }
+          
     # check for malicious characters and return error if found
     bad_command = validate_command(cmd)
     if bad_command != None:
@@ -165,8 +171,7 @@ def cmd_handler(cmd):
     # store the command
     store_command(cmd)
     
-    # process the command
-    resp = cmd + " done."
+    # process the command    
           
     try:
         resp = avail_cmds[cmd](cmd)
