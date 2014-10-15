@@ -212,10 +212,10 @@
 			// Get Ansible facts and other data
 			init();
 			
-			//$('#assembleTabs a').click(function (e) {
-      //e.preventDefault()
-      //$(this).tab('show')
-      //})
+			$('ul.nav a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+      })
 			
 			$("#Bad-CMD").click(function(){
 				sendCmdSrvCmd("XXX", testCmdHandler);
