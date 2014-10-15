@@ -20,7 +20,7 @@
 	<body>
 		<div class="container-fluid">
 			<div class="tabbable boxed parentTabs">
-				<ul class="nav nav-tabs"><!-- Top Level Nav-->
+				<ul class="nav nav-tabs top-tab"><!-- Top Level Nav-->
 					<li class="active"><a href="#set1">Tab 1</a></li>
 					<li><a href="#set2">Tab 2</a></li>
 				</ul>
@@ -83,7 +83,7 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-			$("#set1").tab('show');
+			$("#top-tab a:first").tab('show');
 			$("ul.nav a").click(function (e) {
 				e.preventDefault();
 				$(this).tab('show');
