@@ -275,22 +275,21 @@
 				// If this is the first time config_vars.yml will be empty
 				// so copy from effective_vars
 				if (Object.keys(data).length == 0) {
-					consoleLog("data len 0");
-					$('#networkForm').each( function(i, field) { 
-					//	$.each($('#networkForm').serializeArray(), function(i, field) { 
-    			consoleLog(field.name);
-    			// config_vars[field.name] = effective_vars[field.name];
-		      });
-		      $('#networkForm').each( function(){
+					$('#Configure input').each( function(){
+						if (this.name in effective_vars) {
+							config_vars[this.name] = effective_vars[this.name];
+						}
 		        //console.log($(this).val());
-		        consoleLog($(this).attr("name"));
+		        consoleLog(this.name));
 		        });
-				
+		      }
+				else
+					config_vars = data;
 				//config_vars = data;
 				//consoleLog(jqXHR);
 				return true;
 			}
-		}
+	
 
 			function sendCmdSrvCmd(command, callback) {
 				//alert ("in sendCmdSrvCmd(");
