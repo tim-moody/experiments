@@ -1,0 +1,29 @@
+<form role="form" id="form2" class="form-inline">
+
+                  		<label for="xsce_domain">Host and Domain Name</label>
+                  		<input type="text" id="xsce_hostname" readonly="" style="width:200px"> &nbsp;.&nbsp;
+                  		<input type="text" class="form-control" id="xsce_domain" placeholder="Enter new domain name without leading dot.">    
+                  </form>
+                  
+<form role="form" id="form3" class="form-group">
+                  	<div>
+                  		<label for="exampleInputPassword1">Password</label>
+                  		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  	</div>
+                  	<div>
+                  		<label for="exampleInputFile">File input</label>
+                  		<input type="file" id="exampleInputFile">
+                  		<p class="help-block">Example block-level help text here.</p>
+                  	</div>
+                  	<h2>Services to Enable</h2>
+                  	<div class="checkbox">
+                  		<label>
+                  			<input type="checkbox"> Check me out
+                  		</label>
+                  		<label class="checkbox">
+                        <input type="checkbox" id="mysql_enabble">
+                        Check to Enable the Mysql database.
+                      </label>
+                  	</div>
+                  	<button type="submit" class="btn btn-default">Submit</button>
+                  </form>                  
