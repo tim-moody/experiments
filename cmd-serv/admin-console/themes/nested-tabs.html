@@ -19,52 +19,50 @@
 	</head>
 	<body>
 		<div class="container-fluid">
-	<div class="tabbable boxed parentTabs">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#set1">Tab 1</a>
-        </li>
-        <li><a href="#set2">Tab 2</a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane fade active in" id="set1">
-            <div class="tabbable">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#sub11">Tab 1.1</a>
-                    </li>
-                    <li><a href="#sub12">Tab 1.2</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade active in" id="sub11">
-                        <p>Tab 1.1</p>
-                    </div>
-                    <div class="tab-pane fade" id="sub12">
-                        <p>Tab 1.2</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="set2">
-            <div class="tabbable">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#sub21">Tab 2.1</a>
-                    </li>
-                    <li><a href="#sub22">Tab 2.2</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade active in" id="sub21">
-                        <p>Tab 2.1</p>
-                    </div>
-                    <div class="tab-pane fade" id="sub22">
-                        <p>Tab 2.2</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+			<div class="tabbable boxed parentTabs">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#set1">Tab 1</a></li>
+					<li><a href="#set2">Tab 2</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade active in" id="set1">
+						<div class="tabbable">
+							<ul class="nav nav-pills">
+								<li class="active"><a href="#sub11">Tab 1.1</a>
+								</li>
+								<li><a href="#sub12">Tab 1.2</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane fade active in" id="sub11">
+									<p>Tab 1.1</p>
+								</div>
+								<div class="tab-pane fade" id="sub12">
+									<p>Tab 1.2</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="set2">
+						<div class="tabbable">
+							<ul class="nav nav-pills">
+								<li class="active"><a href="#sub21">Tab 2.1</a>
+								</li>
+								<li><a href="#sub22">Tab 2.2</a>
+								</li>
+							</ul>
+							<div class="tab-content">
+								<div class="tab-pane fade active in" id="sub21">
+									<p>Tab 2.1</p>
+								</div>
+								<div class="tab-pane fade" id="sub22">
+									<p>Tab 2.2</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div> <!-- container -->
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -72,10 +70,10 @@
 		<!-- Include all compiled plugins (below), or include individual files as needed -->
 		<script src="../js/bootstrap.min.js"></script>
 		<script type="text/javascript">
-//$("ul.nav-tabs a").click(function (e) {
-//  e.preventDefault();  
-//    $(this).tab('show');
-//});
+			$("ul.nav a").click(function (e) {
+				e.preventDefault();
+				$(this).tab('show');
+			});
 		</script>
 
 	</body>
