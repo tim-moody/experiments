@@ -211,14 +211,16 @@
 			var ansibleFacts = {};
 			var effective_vars = {};
 			var config_vars = {};
-
-			// Get Ansible facts and other data
-			init();
-
+			
+			// Set up nav
+			
 			$("ul.nav a").click(function (e) {
 				e.preventDefault();
 				$(this).tab('show');
 			});
+
+			// Get Ansible facts and other data
+			init();
 
 			$("#Bad-CMD").click(function(){
 				sendCmdSrvCmd("XXX", testCmdHandler);
