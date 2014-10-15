@@ -276,7 +276,8 @@
 				// so copy from effective_vars
 				if (Object.keys(data).length == 0) {
 					consoleLog("data len 0");
-					$.each($('#networkForm').serializeArray(), function(i, field) { 
+					$('#networkForm').each( function(i, field) { 
+					//	$.each($('#networkForm').serializeArray(), function(i, field) { 
     			consoleLog(field.name);
     			// config_vars[field.name] = effective_vars[field.name];
 		      });
