@@ -23,305 +23,310 @@
 				<center><h1>School Server Admin Console</h1></center>
 			</div>
 			<div class="tabbable boxed parentTabs">
-				<ul class="nav nav-tabs">
+				<ul class="nav nav-tabs"><!-- Top Level Nav-->
 					<li class="active"><a href="#Configure" data-toggle="tab">Configure</a></li>
 					<li><a href="#InstallContent" data-toggle="tab">Install Content</a></li>
 					<li><a href="#AssembleContent" data-toggle="tab">Assemble Content</a></li>
 				</ul>
-				<div id="top-tab-content" class="tab-content">
-					<div class="tab-pane active" id="Configure">
-						<div class="row-fluid">
-								<div class="col-md-6 col-md-offset-3">
-									<h1>Configure the School Server</h1>
-								</div>
-						</div>			
-						<div class="container-fluid">
+				<div id="top-tab-content" class="tab-content"> <!-- Top Level Content-->
+					<div class="tab-pane active" id="Configure"> <!-- 2nd Level Option Configure -->
+						<div class="row-fluid"> <!-- Configure Header -->
+							<div class="col-md-6 col-md-offset-3">
+								<h1>Configure the School Server</h1>
+							</div>
+						</div> <!-- row -->
+						<!--  <div class="container-fluid"> -->
+						<div class="tabbable"> <!-- 2nd Level Configure Sub Nav-->
 							<div class="row-fluid">
 								<div class="col-md-3">
 									<h2>Check List</h2>
-									<ul class="nav nav-sidebar">
-										<li class="active"><a href="#">1. Select Storage</a></li>
+									<ul class="nav nav-pills nav-stacked">
+										<li class="active"><a href="#ConfigureNetwork">Networke</a></li>
 										<li><a href="#">Next Step</a></li>
 										<li><a href="#">Next Step</a></li>
 										<li><a href="#">Next Step</a></li>
 									</ul>
 								</div>
 								<div class="col-md-9">
-									<h2>Configuration Parameters</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <form role="form" id="networkForm">
-                  	<div class="form-group">
-                  		<label for="xsce_hostname">Host Name</label>
-                  		<input type="text"  id="xsce_hostname" readonly>                		
-                  	</div>
-                  	<div class="form-group">
-                  		<label for="xsce_domain">Domain Name (no dot)</label>
-                  		<input type="text" class="form-control" id="xsce_domain" placeholder="Enter new domain name without leading dot.">                  		
-                  	</div>
-                  </form>
-                  <h2>Check Each Service to Enable</h2>
-                  <form role="form" id="enableForm">
-                  	<h3>For Students<h3>                  	
-                  	<div class="checkbox">
-                  		<label>
-                  			<input type="checkbox" id="xo-services_enabled">Services for XO Laptops such as Registration, Backup, and the Activity Server
-                  		</label>
-                  	</div>
-                  	<div class="checkbox">	
-                  		<label>
-                        <input type="checkbox" id="ejabberd_enabled">Chat and Collaboration Server for XO Laptops and Others                        
-                      </label>
-                    </div>
-                  	<div class="checkbox">	
-                      <label>
-                  			<input type="checkbox" id="moodle_enabled">Moodle, a Courseware Manager and E-Learning Platform
-                  		</label>
-                    </div>
-                  	<div class="checkbox">			
-                  		<label>
-                  			<input type="checkbox" id="elgg_enabled">ELGG, a Social Networking Platform for Student Blogging, File Sharing, and Collaboration
-                  		</label>
-                  	</div>
-                  	<div class="checkbox">			
-                  		<label>
-                  			<input type="checkbox" id="samba_enabled">SAMBA provides Network File Sharing
-                  		</label>
-                  	</div>
-                  	<div class="checkbox">	
-                  		<label>
-                  			<input type="checkbox" id="iiab_enabled">Internet-in-a-Box, a collection of popular content such as the Wikipedia and Khan Academy.  You must also install content.
-                  		</label>
-                  	</div>
-                  	<div class="checkbox">	
-                  		<label>
-                  			<input type="checkbox" id="rachel_enabled">RACHEL, another collection of popular content including the Wikipedia and Khan Academy.  You must also install content.
-                  		</label>
-                  	</div>
-                  	<div class="checkbox">		
-                  		<label>
-                  			<input type="checkbox" id="pathagar_enabled">Pathagar, an E-Book Platform. You must also install content.
-                  		</label>
-                  	</div>
-                  	<h3>For Monitoring and Administration<h3>                  		
-                  	<div class="checkbox">		
-                  		<label>
-                  			<input type="checkbox" id="xovis_enabled">XO Visualization&mdash;Graphs of Student Usage Statistics
-                  		</label>
-                  	</div>
-                  	<div class="checkbox">		
-                  		<label>
-                  			<input type="checkbox" id="sugar-stats_enabled">Collect statistics on the use of Sugar Activities
-                  		</label>
-                  	</div>
-                  	<div class="checkbox">                  		
-                  		<label>
-                  			<input type="checkbox" id="ajenti_enabled">Ajenti, a web console for system administration
-                  		</label>
-                  	</div>
-                  	<div class="checkbox">                  		
-                  		<label>
-                  			<input type="checkbox" id="monit_enabled">Monit watches critical applications and restarts them if they fail.
-                  		</label>
-                  	</div>                  	
-                  	<div class="checkbox">                  		
-                  		<label>
-                  			<input type="checkbox" id="munin_enabled">Munin collects and graphs system-level statistics
-                  		</label>
-                  	</div> 
-                  	<div class="checkbox">                  		
-                  		<label>
-                  			<input type="checkbox" id="vnstat_enabled">VnStat gathers and displays networking statistics                  			
-                  		</label>
-                  	</div> 
-                  </form>                  									
+									<div class="tab-content">
+										<h2>Configuration Parameters</h2>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+										<div class="tab-pane active" id="ConfigureNetwork"> <!--  ConfigureNetwork -->
+											<form role="form" id="networkForm">
+												<div class="form-group">
+													<label for="xsce_hostname">Host Name</label>
+													<input type="text"  id="xsce_hostname" readonly>
+												</div>
+												<div class="form-group">
+													<label for="xsce_domain">Domain Name (no dot)</label>
+													<input type="text" class="form-control" id="xsce_domain" placeholder="Enter new domain name without leading dot.">
+												</div>
+											</form>
+										</div> <!--  network pane -->
+										<div class="tab-pane active" id="ConfigureServices"> <!--  ConfigureServices -->
+											<h2>Check Each Service to Enable</h2>
+											<form role="form" id="enableForm">
+												<h3>For Students<h3>
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="xo-services_enabled">Services for XO Laptops such as Registration, Backup, and the Activity Server
+														</label>
+													</div>
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="ejabberd_enabled">Chat and Collaboration Server for XO Laptops and Others
+														</label>
+													</div>
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="moodle_enabled">Moodle, a Courseware Manager and E-Learning Platform
+														</label>
+													</div>
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="elgg_enabled">ELGG, a Social Networking Platform for Student Blogging, File Sharing, and Collaboration
+														</label>
+													</div>
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="samba_enabled">SAMBA provides Network File Sharing
+														</label>
+													</div>
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="iiab_enabled">Internet-in-a-Box, a collection of popular content such as the Wikipedia and Khan Academy.  You must also install content.
+														</label>
+													</div>
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="rachel_enabled">RACHEL, another collection of popular content including the Wikipedia and Khan Academy.  You must also install content.
+														</label>
+													</div>
+													<div class="checkbox">
+														<label>
+															<input type="checkbox" id="pathagar_enabled">Pathagar, an E-Book Platform. You must also install content.
+														</label>
+													</div>
+													<h3>For Monitoring and Administration<h3>
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" id="xovis_enabled">XO Visualization&mdash;Graphs of Student Usage Statistics
+															</label>
+														</div>
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" id="sugar-stats_enabled">Collect statistics on the use of Sugar Activities
+															</label>
+														</div>
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" id="ajenti_enabled">Ajenti, a web console for system administration
+															</label>
+														</div>
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" id="monit_enabled">Monit watches critical applications and restarts them if they fail.
+															</label>
+														</div>
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" id="munin_enabled">Munin collects and graphs system-level statistics
+															</label>
+														</div>
+														<div class="checkbox">
+															<label>
+																<input type="checkbox" id="vnstat_enabled">VnStat gathers and displays networking statistics
+															</label>
+														</div>
+													</form>
+												</div> <!--  services pane -->
+											</div> <!-- column -->
+										</div> <!-- row -->
+										<!-- </div>  inner container -->
+									</div> <!-- Configure -->
+									<div class="tab-pane" id="InstallContent">
+										<h1>Install Content</h1>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+									</div> <!-- InstallContent -->
+									<div class="tab-pane" id="AssembleContent">
+										<h1>Assemble Content</h1>
+										<div class="container-fluid">
+											<div class="row-fluid">
+												<div class="col-md-3">
+													<h2>Steps</h2>
+													<ul class="nav nav-pills nav-stacked" data-tabs="tabs">
+														<li class="active"><a href="#Assemble1">1. Select Storage</a></li>
+														<li><a href="#Assemble2">Next Step</a></li>
+													</ul>
+												</div>
+												<div class="col-md-9">
+													<h1>Assemble</h1>
+													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+													<div id="assembleTabs" class="tab-content">
+														<div class="tab-pane active" id="Assemble1">
+															<form role="form" id="assembleForm1">
+																<div class="form-group">
+																	<label for="exampleInputEmail1">Email address</label>
+																	<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+																</div>
+																<div class="form-group">
+																	<label for="exampleInputPassword1">Password</label>
+																	<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+																</div>
+															</form>
+														</div>
+														<div class="tab-pane" id="Assemble2">
+															<form role="form" id="assembleForm2">
+																<div class="form-group">
+																	<label for="exampleInputFile">File input</label>
+																	<input type="file" id="exampleInputFile">
+																	<p class="help-block">Example block-level help text here.</p>
+																</div>
+																<div class="checkbox">
+																	<label>
+																		<input type="checkbox"> Check me out
+																	</label>
+																</div>
+																<button type="submit" class="btn btn-default">Submit</button>
+															</form>
 
-								</div> <!-- column -->
-							</div> <!-- row -->
-						</div> <!-- inner container -->
-					</div> <!-- Configure -->
-					<div class="tab-pane" id="InstallContent">
-						<h1>Install Content</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					</div> <!-- InstallContent -->
-					<div class="tab-pane" id="AssembleContent">
-						<h1>Assemble Content</h1>
-						<div class="container-fluid">
-							<div class="row-fluid">
-								<div class="col-md-3">
-									<h2>Steps</h2>
-									<ul class="nav nav-pills nav-stacked" data-tabs="tabs">
-										<li class="active"><a href="#Assemble1">1. Select Storage</a></li>										
-										<li><a href="#Assemble2">Next Step</a></li>
-									</ul>
-								</div>
-								<div class="col-md-9">
-									<h1>Assemble</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-									<div id="assembleTabs" class="tab-content">
-  					        <div class="tab-pane active" id="Assemble1">
-                      <form role="form" id="assembleForm1">
-                      	<div class="form-group">
-                      		<label for="exampleInputEmail1">Email address</label>
-                      		<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-                      	</div>
-                      	<div class="form-group">
-                      		<label for="exampleInputPassword1">Password</label>
-                      		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                      	</div>
-                      </form>
-                    </div>
-                    <div class="tab-pane" id="Assemble2">
-                      <form role="form" id="assembleForm2">
-                      	<div class="form-group">
-                      		<label for="exampleInputFile">File input</label>
-                      		<input type="file" id="exampleInputFile">
-                      		<p class="help-block">Example block-level help text here.</p>
-                      	</div>
-                      	<div class="checkbox">
-                      		<label>
-                      			<input type="checkbox"> Check me out
-                      		</label>
-                      	</div>
-                      	<button type="submit" class="btn btn-default">Submit</button>
-                      </form>
-    
-    									<button id="Bad-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Bad Command</button>
-    									<button id="Test-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Test</button>
-    									<button id="List-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv List</button>
-    								</div>
-								</div> <!-- column -->
-							</div> <!-- row -->
-						</div> <!-- inner container -->
-					</div> <!-- AssembleContent -->
-				</div> <!-- my-tab-content -->
-			</div> <!-- tabbable boxed parentTabs -->
-		</div> <!-- container -->
+															<button id="Bad-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Bad Command</button>
+															<button id="Test-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Test</button>
+															<button id="List-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv List</button>
+														</div>
+													</div> <!-- column -->
+												</div> <!-- row -->
+											</div> <!-- inner container -->
+										</div> <!-- AssembleContent -->
+									</div> <!-- my-tab-content -->
+								</div> <!-- tabbable boxed parentTabs -->
+							</div> <!-- container -->
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-		<script src="js/jquery.min.js"></script>
-		<!-- Include all compiled plugins (below), or include individual files as needed -->
-		<script src="js/bootstrap.min.js"></script>
+							<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+							<script src="js/jquery.min.js"></script>
+							<!-- Include all compiled plugins (below), or include individual files as needed -->
+							<script src="js/bootstrap.min.js"></script>
 
-		<script type="text/javascript">
+							<script type="text/javascript">
 
-			var ansibleFacts = {};
-			var effective_vars = {};
-			var config_vars = {};
-			
-			// Get Ansible facts and other data
-			init();
-						
-      $("ul.nav a").click(function (e) {
-				e.preventDefault();
-				$(this).tab('show');
-			});
-			
-			$("#Bad-CMD").click(function(){
-				sendCmdSrvCmd("XXX", testCmdHandler);
-			});
+								var ansibleFacts = {};
+								var effective_vars = {};
+								var config_vars = {};
 
-			$("#Test-CMD").click(function(){
-				sendCmdSrvCmd("TEST ;", testCmdHandler);
-			});
+								// Get Ansible facts and other data
+								init();
 
-			$("#List-CMD").click(function(){
-				sendCmdSrvCmd("LIST", listCmdHandler);
-			});
+								$("ul.nav a").click(function (e) {
+									e.preventDefault();
+									$(this).tab('show');
+								});
 
-			//var testCmdHandler = function (data, textStatus, jqXHR) is not necessary
-			var testCmdHandler = function (data)
-			//function testCmdHandler (data)
-			{
-				alert ("in Cmdhandler");
-				consoleLog(data);
-				return true;
-			};
+								$("#Bad-CMD").click(function(){
+									sendCmdSrvCmd("XXX", testCmdHandler);
+								});
 
-			function listCmdHandler (data)
-			{
-				alert ("in listCmdHandler");
-				consoleLog(data);
-				//consoleLog(jqXHR);
-				return true;
-			}
-			
-			function getAnsibleFacts (data)
-			{
-				alert ("in getAnsibleFacts");
-				consoleLog(data);
-				ansibleFacts = data;
-				//consoleLog(jqXHR);
-				return true;
-			}			
+								$("#Test-CMD").click(function(){
+									sendCmdSrvCmd("TEST ;", testCmdHandler);
+								});
 
-			function getInstallVars (data)
-			{
-				alert ("in getInstallVars");
-				consoleLog(data);
-				effective_vars = data;
-				//consoleLog(jqXHR);
-				return true;
-			}			
-			function getConfigVars (data)
-			{
-				alert ("in getConfigVars");
-				consoleLog(data);
-				config_vars = data;
-				//consoleLog(jqXHR);
-				return true;
-			}			
+								$("#List-CMD").click(function(){
+									sendCmdSrvCmd("LIST", listCmdHandler);
+								});
 
-			function sendCmdSrvCmd(command, callback) {
-				//alert ("in sendCmdSrvCmd(");
-				//consoleLog ('ran sendCmdSrvCmd');
-				$.ajax({
-					type: 'POST',
-					url: 'cmd-service.php',
-					data: {
-						command: command
-					},
-					async: false,
-					dataType: 'json',
-					//success: callback,
-					callback: callback,
-					success: function(data, textStatus, jqXHR){
-						//consoleLog(textStatus);
-						//consoleLog(jqXHR);
-						// consoleLog(this.callback);
-						if ("Error" in data) {
-							alert ("Error: " + data["Error"]);
-						}
-						else {
-							this.callback(data);
-						}
-					},
-					error: jsonErrhandler
-				});
+								//var testCmdHandler = function (data, textStatus, jqXHR) is not necessary
+								var testCmdHandler = function (data)
+								//function testCmdHandler (data)
+								{
+									alert ("in Cmdhandler");
+									consoleLog(data);
+									return true;
+								};
 
-				return true;
-			}
-			function jsonErrhandler (jqXHR, textStatus, errorThrown)
-			{
-				alert ("in Errhandler: " + textStatus + ", " + errorThrown);
-				//consoleLog("In Error Handler logging jqXHR");
-				consoleLog(textStatus);
-				consoleLog(errorThrown);
-				consoleLog(jqXHR);
-				return false;
-			}
-			function consoleLog (msg)
-			{
-				console.log(msg); // for IE there can be no console messages unless in tools mode
-			}
+								function listCmdHandler (data)
+								{
+									alert ("in listCmdHandler");
+									consoleLog(data);
+									//consoleLog(jqXHR);
+									return true;
+								}
 
-			function init ()
-			{
-				sendCmdSrvCmd("GET-ANS", getAnsibleFacts);
-				sendCmdSrvCmd("GET-VARS", getInstallVars);
-				sendCmdSrvCmd("GET-CONF", getConfigVars);				
-			}			
+								function getAnsibleFacts (data)
+								{
+									alert ("in getAnsibleFacts");
+									consoleLog(data);
+									ansibleFacts = data;
+									//consoleLog(jqXHR);
+									return true;
+								}
 
-		</script>
+								function getInstallVars (data)
+								{
+									alert ("in getInstallVars");
+									consoleLog(data);
+									effective_vars = data;
+									//consoleLog(jqXHR);
+									return true;
+								}
+								function getConfigVars (data)
+								{
+									alert ("in getConfigVars");
+									consoleLog(data);
+									config_vars = data;
+									//consoleLog(jqXHR);
+									return true;
+								}
 
-	</body>
-</html>
+								function sendCmdSrvCmd(command, callback) {
+									//alert ("in sendCmdSrvCmd(");
+									//consoleLog ('ran sendCmdSrvCmd');
+									$.ajax({
+										type: 'POST',
+										url: 'cmd-service.php',
+										data: {
+											command: command
+										},
+										async: false,
+										dataType: 'json',
+										//success: callback,
+										callback: callback,
+										success: function(data, textStatus, jqXHR){
+											//consoleLog(textStatus);
+											//consoleLog(jqXHR);
+											// consoleLog(this.callback);
+											if ("Error" in data) {
+												alert ("Error: " + data["Error"]);
+											}
+											else {
+												this.callback(data);
+											}
+										},
+										error: jsonErrhandler
+									});
+
+									return true;
+								}
+								function jsonErrhandler (jqXHR, textStatus, errorThrown)
+								{
+									alert ("in Errhandler: " + textStatus + ", " + errorThrown);
+									//consoleLog("In Error Handler logging jqXHR");
+									consoleLog(textStatus);
+									consoleLog(errorThrown);
+									consoleLog(jqXHR);
+									return false;
+								}
+								function consoleLog (msg)
+								{
+									console.log(msg); // for IE there can be no console messages unless in tools mode
+								}
+
+								function init ()
+								{
+									sendCmdSrvCmd("GET-ANS", getAnsibleFacts);
+									sendCmdSrvCmd("GET-VARS", getInstallVars);
+									sendCmdSrvCmd("GET-CONF", getConfigVars);
+								}
+
+							</script>
+
+						</body>
+					</html>
