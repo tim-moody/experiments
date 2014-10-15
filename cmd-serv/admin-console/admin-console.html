@@ -272,6 +272,40 @@
 			{
 				alert ("in getConfigVars");
 				consoleLog(data);
+				# If this is the first time config_vars.yml will be empty
+				# so copy from effective_vars
+				if (data = "{}" {
+					$.each($('#Configure form input').serializeArray(), function(i, field) { 
+    			consoleLog(field.name);
+    			// config_vars[field.name] = effective_vars[field.name];
+		      });
+		    }
+		  }
+		
+		$.each($('#'+formName).serializeArray(), function(i, field) { 
+				//if (notRequired.indexOf(field.name) == -1){ - doesn't work in IE8
+				if ($.inArray(field.name, notRequired) == -1){ // not in notRequired array so is required
+    			if (field.value == ""){    				
+    				fieldName = field.name.replace(/([a-z])([A-Z])/g, '$1 $2');
+    				msgText = "Please enter " + formText + "'s " + fieldName + " before proceeding";
+    				alert(msgText);
+    				fieldsValid = false;
+						return false;
+    			}
+    			else {
+    				if (field.name == "Email"){  // Email is special case
+    					if (!validateEmail(field.value)){
+    						msgText = "Please enter a valid Email Address for " + formText + ".";
+    						alert(msgText);
+    						fieldsValid = false;
+								return false;
+    					}
+    				}
+    			}
+    			
+    		} 
+		}); 
+				
 				config_vars = data;
 				//consoleLog(jqXHR);
 				return true;
