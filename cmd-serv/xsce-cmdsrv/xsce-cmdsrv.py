@@ -167,13 +167,7 @@ def cmd_handler(cmd):
     
     # process the command
     resp = cmd + " done."
-    avail_cmds = {
-                 "TEST": do_test,
-                 "LIST": list_library,
-                 "WGET": wget_file,
-                 "GET-ANS": return_ans_facts,
-                 "GET-VARS": return_install_vars
-                 }                         
+          
     try:
         resp = avail_cmds[cmd](cmd)
     except KeyError:
