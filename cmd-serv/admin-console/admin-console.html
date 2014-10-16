@@ -192,6 +192,7 @@
 											<button id="Bad-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Bad Command</button>
 											<button id="Test-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Test</button>
 											<button id="List-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv List</button>
+											<button id="SET-CONF-CMD" type="button" class="btn btn-lg btn-primary">CmdSrv Set Conf</button>
 										</div> <!-- pane 2 -->
 									</div> <!-- Assemble tab-content -->
 								</div> <!-- column -->
@@ -232,6 +233,10 @@
 
 			$("#List-CMD").click(function(){
 				sendCmdSrvCmd("LIST", listCmdHandler);
+			});
+			
+			$("#SET-CONF-CMD").click(function(){
+				setConfigVars();
 			});
 
 			//var testCmdHandler = function (data, textStatus, jqXHR) is not necessary
