@@ -250,6 +250,14 @@
 				//consoleLog(jqXHR);
 				return true;
 			}
+			
+			function genericCmdHandler (data)
+			{
+				alert ("in genericCmdHandler");
+				consoleLog(data);
+				//consoleLog(jqXHR);
+				return true;
+			}
 
 			function getAnsibleFacts (data)
 			{
@@ -290,6 +298,14 @@
 				return true;
 			}
 	
+			function setConfigVars ()
+			{
+				alert ("in setConfigVars");
+				cmd = "SET-CONF " + JSON.stringify(config_vars);
+				sendCmdSrvCmd(cmd, genericCmdHandler);
+
+				return true;
+			}
 
 			function sendCmdSrvCmd(command, callback) {
 				//alert ("in sendCmdSrvCmd(");

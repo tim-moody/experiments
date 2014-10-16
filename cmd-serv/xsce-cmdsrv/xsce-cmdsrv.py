@@ -158,9 +158,10 @@ def cmd_handler(cmd):
         "TEST": do_test,
         "LIST": list_library,
         "WGET": wget_file,
-        "GET-ANS": return_ans_facts,
-        "GET-VARS": return_install_vars,
-        "GET-CONF": return_config_vars
+        "GET-ANS": get_ans_facts,
+        "GET-VARS": get_install_vars,
+        "GET-CONF": get_config_vars
+        "SET-CONF": set_config_vars
         }
           
     # check for malicious characters and return error if found
@@ -171,41 +172,51 @@ def cmd_handler(cmd):
     # store the command
     store_command(cmd)
     
-    # process the command    
-          
+    # process the command
+    
+    # parse for arguments
+    cmd_parts = cmd.split(' ')
+    cmd = cmd_parts[0]
+    cmd_args = cmd_parts[1:]
     try:
-        resp = avail_cmds[cmd](cmd)
+        resp = avail_cmds[cmd](cmd, cmd_args)
     except KeyError:
         resp = '{"Error": "Unknown Command"}'        
     return (resp)
 
-def do_test(cmd):
+def do_test(cmd, cmd_args):
     resp = '{"test": "xxx"}'    
     return (resp)
     
-def list_library(cmd):
+def list_library(cmd, cmd_args):
     resp = subprocess.check_output(["scripts/list_libr.sh"])
     json_resp = json_array("library_list", resp)    
     #proc = subprocess.Popen(['python','fake_utility.py'],stdout=subprocess.PIPE)   
     return (json_resp)
     
-def wget_file(cmd):
+def wget_file(cmd, cmd_args):
     resp = cmd + " done."
     
     return (resp)
     
-def return_ans_facts(cmd):
+def get_ans_facts(cmd, cmd_args):
     resp = json.dumps(ansible_facts)    
     return (resp)  
     
-def return_install_vars(cmd):
+def get_install_vars(cmd, cmd_args):
     resp = json.dumps(effective_vars)    
     return (resp)  
     
-def return_config_vars(cmd):
+def get_config_vars(cmd, cmd_args):
     read_config_vars()
     resp = json.dumps(config_vars)    
-    return (resp)            
+    return (resp)
+    
+def set_config_vars(cmd, cmd_args):
+    config_vars = json.dumps(cmd_args[0])
+    write_config_vars()
+    resp = cmd_success(cmd)    
+    return (resp)                 
         
 def json_array(name, str):
     try:
@@ -223,8 +234,11 @@ def validate_command(cmd):
     else:
         return None
 
-def cmd_error():
-    return ('{"Error": "Internal Server Error processing Command."}')   
+def cmd_success(cmd):
+   return ('{"Success": "Command ' + cmd + '."}')
+   
+def cmd_error(cmd=None):
+    return ('{"Error": "Internal Server Error processing Command ' + cmd + '."}')   
     
 def store_command(cmd):
     global last_command_rowid
