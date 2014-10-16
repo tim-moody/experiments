@@ -162,12 +162,7 @@ def cmd_handler(cmd):
         "GET-VARS": get_install_vars,
         "GET-CONF": get_config_vars,
         "SET-CONF": set_config_vars
-        }
-          
-    # check for malicious characters and return error if found
-    bad_command = validate_command(cmd)
-    if bad_command != None:
-        return (bad_command)
+        }             
         
     # store the command
     store_command(cmd)
@@ -178,6 +173,10 @@ def cmd_handler(cmd):
     cmd_parts = cmd.split(' ')
     cmd = cmd_parts[0]
     cmd_args = cmd_parts[1:]
+    
+    # commands that run scripts should check for malicious characters in cmd_args and return error if found
+    # bad_command = validate_command(cmd_args)
+    
     try:
         resp = avail_cmds[cmd](cmd, cmd_args)
     except KeyError:
