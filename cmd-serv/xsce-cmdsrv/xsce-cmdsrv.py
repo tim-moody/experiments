@@ -160,7 +160,7 @@ def cmd_handler(cmd):
         "WGET": wget_file,
         "GET-ANS": get_ans_facts,
         "GET-VARS": get_install_vars,
-        "GET-CONF": get_config_vars
+        "GET-CONF": get_config_vars,
         "SET-CONF": set_config_vars
         }
           
