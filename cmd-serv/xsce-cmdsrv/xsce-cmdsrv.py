@@ -212,6 +212,13 @@ def get_config_vars(cmd, cmd_args):
     return (resp)
     
 def set_config_vars(cmd, cmd_args):
+    global config_vars
+    lock = threading.Lock()
+    lock.acquire() # will block if lock is already held
+    try:
+        config_vars = json.dumps(cmd_args[0]        
+    finally:
+        lock.release() # release lock, no matter what
     config_vars = json.dumps(cmd_args[0])
     write_config_vars()
     resp = cmd_success(cmd)    
@@ -313,11 +320,17 @@ def read_config_vars():
 def write_config_vars():            
     global config_vars  
     
-    with open(xsce_ansible_path + "/vars/config_vars.yml", 'w') as f:
+    lock = threading.Lock()
+    lock.acquire() # will block if lock is already held
+    
+    try:
+        with open(xsce_ansible_path + "/vars/config_vars.yml", 'w') as f:
         f.write('# DO NOT MODIFY THIS FILE.\n')
         f.write('# IT IS AUTOMATICALLY GENERATED.\n')
         json.dump(config_vars, f) 
         f.close() 
+    finally:
+        lock.release() # release lock, no matter what    
     
 def get_xsce_vars():            
     global default_vars
